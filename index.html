@@ -146,11 +146,12 @@ footer{text-align:center; color:var(--text2); font-size:.72rem; margin-top:40px;
       <path d="M470,210 Q400,250 360,290" fill="none" stroke="var(--day2)" stroke-width="3.5" stroke-linecap="round" filter="url(#rough)" marker-end="url(#arr)"/>
       <!-- D5 因特拉肯→格林德瓦 -->
       <path d="M360,290 Q350,300 340,295" fill="none" stroke="var(--day3)" stroke-width="3.5" stroke-linecap="round" filter="url(#rough)" marker-end="url(#arr)"/>
-      <!-- D7 格林德瓦→ZRH -->
-      <path d="M340,295 Q450,230 560,150" fill="none" stroke="var(--day6)" stroke-width="3.5" stroke-dasharray="6 4" stroke-linecap="round" filter="url(#rough)" marker-end="url(#arr)"/>
+      <!-- D7 格林德瓦→Bern→ZRH -->
+      <path d="M340,295 Q380,260 430,220 Q500,180 560,150" fill="none" stroke="var(--day6)" stroke-width="3.5" stroke-dasharray="6 4" stroke-linecap="round" filter="url(#rough)" marker-end="url(#arr)"/>
       <!-- 城市点 -->
       <g font-size="11" font-family="sans-serif" fill="var(--text)">
         <circle cx="560" cy="150" r="6" fill="var(--accent)"/><text x="570" y="146">苏黎世 ZRH ✈</text>
+        <circle cx="430" cy="220" r="4.5" fill="var(--gold)"/><text x="438" y="216" font-size="9">Bern · D7</text>
         <circle cx="470" cy="210" r="5.5" fill="var(--day1)"/><text x="478" y="206">卢塞恩 · D2住</text>
         <circle cx="360" cy="290" r="5.5" fill="var(--day2)"/><text x="368" y="286">因特拉肯 · D3-D4住</text>
         <circle cx="340" cy="295" r="5.5" fill="var(--day3)"/><text x="270" y="312">格林德瓦 · D5-D6住</text>
@@ -161,7 +162,7 @@ footer{text-align:center; color:var(--text2); font-size:.72rem; margin-top:40px;
       <span><i style="background:var(--day1)"></i>D2 苏黎世→卢塞恩</span>
       <span><i style="background:var(--day2)"></i>D3 卢塞恩→因特拉肯</span>
       <span><i style="background:var(--day3)"></i>D5 因特拉肯→格林德瓦</span>
-      <span><i style="background:var(--day6)"></i>D7 格林德瓦→苏黎世</span>
+      <span><i style="background:var(--day6)"></i>D7 格林德瓦→Bern→苏黎世</span>
     </div>
   </div>
 </section>
@@ -224,7 +225,7 @@ footer{text-align:center; color:var(--text2); font-size:.72rem; margin-top:40px;
 <!-- 4. 逐日行程 -->
 <section>
   <h2><span class="bar"></span>逐日行程</h2>
-  <p class="sub">点击日期展开当日路线地图与时间轴 · 地点可点击唤起导航 · 🚗全天导航为自驾多点路线</p>
+  <p class="sub">点击日期展开当日路线地图与时间轴 · 地点可点击唤起导航 · 🚗全天导航为自驾多点路线<br>🌤 D4/D6 为机动日，行前用 SRF Meteo 看天气灵活调整组合，山区天气多变以当天为准</p>
 
   <div class="day" data-day="1">
     <div class="day-head" onclick="this.parentElement.classList.toggle('open')">
@@ -254,7 +255,7 @@ footer{text-align:center; color:var(--text2); font-size:.72rem; margin-top:40px;
         <div class="tl-item"><div class="tl-time">11:30</div><div class="tl-cont">抵卢塞恩，停车。游 <b>卡贝尔廊桥</b><span class="loc" data-dest="Chapel Bridge Lucerne">导航</span> + <b>狮子纪念碑</b><span class="loc" data-dest="Lion Monument Lucerne">导航</span> + 老城漫步</div></div>
         <div class="tl-item"><div class="tl-time">傍晚</div><div class="tl-cont">入住 <b>Hotel Seeburg</b>（湖畔，含停车位）<br><span class="loc" data-dest="Hotel Seeburg Seeburgstrasse 59-61 6006 Luzern">导航·酒店</span></div></div>
       </div>
-      <div class="day-note">📌 瑞士高速需 vignette 贴纸（CHF 40，到店加购，见待办）</div>
+      <div class="day-note">📌 瑞士高速需 vignette 贴纸（CHF 40，到店加购，见待办）。备选：卢塞恩湖蒸汽船游船（10月仍运营，其他湖9月底停）<span class="loc" data-dest="Lucerne lake steamboat cruise">导航·码头</span></div>
     </div>
   </div>
 
@@ -282,12 +283,13 @@ footer{text-align:center; color:var(--text2); font-size:.72rem; margin-top:40px;
     </div>
     <div class="day-body">
       <div class="timeline">
-        <div class="tl-item"><div class="tl-time">全天</div><div class="tl-cont">因特拉肯区域机动日。推荐：<b>布里恩茨湖 + Giessbach瀑布</b><span class="loc" data-dest="Giessbach Falls Brienz">导航</span>（瑞士最美瀑布之一，缆车+古酒店下午茶）</div></div>
-        <div class="tl-item"><div class="tl-time"></div><div class="tl-cont">备选：<b>施陶巴赫瀑布 Staubachfall</b>（Lauterbrunnen，欧洲最高自由落体瀑布之一）<span class="loc" data-dest="Staubbachfall Lauterbrunnen">导航</span></div></div>
-        <div class="tl-item"><div class="tl-time"></div><div class="tl-cont">备选：<b>少女峰 Jungfraujoch</b><span class="badge">需订座</span>（你待定，如去须提前订位，见待办）<span class="loc" data-dest="Jungfraujoch Top of Europe">导航</span></div></div>
+        <div class="tl-item"><div class="tl-time">上午</div><div class="tl-cont">自驾经 Lauterbrunnen 谷：<b>Trümmelbach 地下冰川瀑布</b><span class="loc" data-dest="Trummelbachfalle Lauterbrunnen">导航</span>（欧洲唯一入山地下瀑布，2万升/秒冰川融水，隧道电梯入山，现场买票，4-11月开放，4岁以下禁入）</div></div>
+        <div class="tl-item"><div class="tl-time"></div><div class="tl-cont">顺路 <b>施陶巴赫瀑布 Staubachfall</b>（欧洲最高自由落体瀑布之一）<span class="loc" data-dest="Staubbachfall Lauterbrunnen">导航</span></div></div>
+        <div class="tl-item"><div class="tl-time">下午</div><div class="tl-cont">备选组合（按天气/兴趣二选一）：<br>① <b>布里恩茨湖 + Giessbach瀑布</b><span class="loc" data-dest="Giessbach Falls Brienz">导航</span> + <b>Iseltwald</b>（《爱的迫降》木桥渔村）<span class="loc" data-dest="Iseltwald Lake Brienz">导航</span><br>② <b>Schynige Platte</b> 齿轨火车（同时看两湖，高山植物园）<span class="loc" data-dest="Schynige Platte Bahn">导航</span> 或 <b>St. Beatus 溶洞</b><span class="loc" data-dest="St Beatus Caves Interlaken">导航</span></div></div>
+        <div class="tl-item"><div class="tl-time"></div><div class="tl-cont">镇内顺路：<b>Höhematte 大草坪</b>看滑翔伞降落（免费，雪山三峰为背景）<span class="loc" data-dest="Hohematte Interlaken">导航</span> · <b>Alpine Wildlife Park</b>（高山 ibex+旱獭，Harder Kulm 谷站旁，免费）<span class="loc" data-dest="Alpenwildpark Interlaken">导航</span></div></div>
         <div class="tl-item"><div class="tl-time">晚</div><div class="tl-cont">回因特拉肯 Neuhaus</div></div>
       </div>
-      <div class="day-note">少女峰 5/1-10/31 强制订座（CHF 10/人往返），上午班次易售罄。行前看天气窗口再决定。</div>
+      <div class="day-note">☔ 瀑布/溶洞带冲锋衣+防滑鞋，湿滑。Trümmelbach 4岁以下禁入。⏱ 当天看天气灵活调整组合，山区天气多变以当天为准。</div>
     </div>
   </div>
 
@@ -301,9 +303,10 @@ footer{text-align:center; color:var(--text2); font-size:.72rem; margin-top:40px;
       <div class="timeline">
         <div class="tl-item"><div class="tl-time">上午</div><div class="tl-cont">退房，自驾 因特拉肯 → 格林德瓦（21km / 30min）</div></div>
         <div class="tl-item"><div class="tl-time">中午</div><div class="tl-cont">入住 <b>Boutique Hotel Glacier</b>（艾格峰景观房）<br><span class="loc" data-dest="Boutique Hotel Glacier Endweg 55 3818 Grindelwald">导航·酒店</span></div></div>
-        <div class="tl-item"><div class="tl-time">下午</div><div class="tl-cont">轻松：<b>First 缆车</b>上半山 + Cliff Walk 悬崖步道（20min）<span class="loc" data-dest="Grindelwald First cable car">导航</span> · 或镇内休整看艾格北壁</div></div>
+        <div class="tl-item"><div class="tl-time">下午</div><div class="tl-cont"><b>推荐：Männlichen 2343m</b><span class="loc" data-dest="Mannlichen Grindelwald Terminal gondola">导航</span>（Grindelwald Terminal 缆车19min上山，360°看艾格/僧侣/少女峰三峰，性价比高人少视野壮）<br>Royal Walk 20-30min 到皇冠观景台（平缓好走）</div></div>
+        <div class="tl-item"><div class="tl-time"></div><div class="tl-cont">备选：轻松 <b>First 缆车</b>上半山 + Cliff Walk（20min）<span class="loc" data-dest="Grindelwald First cable car">导航</span> · 或镇内休整看艾格北壁</div></div>
       </div>
-      <div class="day-note">明天 First 全天，今天别太累。First 自驾停 <b>Grindelwald Terminal</b>（缆车站附近无车位）<span class="loc" data-dest="Grindelwald Terminal parking">导航·停车场</span></div>
+      <div class="day-note">明天 First 全天，今天别太累。Männlichen 与 First 缆车同在 Grindelwald Terminal，停车一处即可。自驾停 <b>Grindelwald Terminal</b><span class="loc" data-dest="Grindelwald Terminal parking">导航·停车场</span>（缆车站附近无车位）</div>
     </div>
   </div>
 
@@ -320,29 +323,31 @@ footer{text-align:center; color:var(--text2); font-size:.72rem; margin-top:40px;
         <div class="tl-item"><div class="tl-time">09:30</div><div class="tl-cont"><b>Bachalpsee 往返徒步</b>（约2h，平缓美景，蓝宝石湖）</div></div>
         <div class="tl-item"><div class="tl-time">12:00</div><div class="tl-cont">山顶 Bergrestaurant 午餐</div></div>
         <div class="tl-item"><div class="tl-time">14:00</div><div class="tl-cont">缆车下到 Schreckfeld → <b>Mountain Cart 山地卡丁车</b> 骑到 Bort（下坡30min）<span class="badge">票内</span></div></div>
-        <div class="tl-item"><div class="tl-time">14:40</div><div class="tl-cont">可加 <b>First Flyer 飞椅</b>（First→Schreckfeld，84km/h，10min）<span class="badge">票内</span></div></div>
-        <div class="tl-item"><div class="tl-time">16:00</div><div class="tl-cont">缆车回格林德瓦</div></div>
+        <div class="tl-item"><div class="tl-time">14:30</div><div class="tl-cont">到 Bort，<b>Bort→格林德瓦村徒步</b>（4.5km/1-1.5h下坡，看艾格北壁+Wetterhorn，T1简单，比坐缆车多一段美景）<span class="loc" data-dest="Bort Grindelwald First hiking trail">导航·步道</span></div></div>
+        <div class="tl-item"><div class="tl-time">16:00</div><div class="tl-cont">回格林德瓦（徒步到村 或 缆车回）</div></div>
       </div>
-      <div class="day-note">🎫 建议 <b>Adventure Package</b>（CHF 60/人，含2活动+无限缆车），比单买划算。旺季可能售罄，建议提前订（见待办）。</div>
+      <div class="day-note">🎫 建议 <b>Adventure Package</b>（CHF 60/人，含2活动+无限缆车），比单买划算。旺季可能售罄，建议提前订（见待办）。可选加 <b>First Flyer 飞椅</b>（票内，体力好再玩）。⏱ 山顶天气多变以当天为准。</div>
     </div>
   </div>
 
   <div class="day" data-day="7">
     <div class="day-head" onclick="this.parentElement.classList.toggle('open')">
-      <div class="day-title"><span class="d">D7</span>10月7日 周二<span class="city">格林德瓦 → 苏黎世市区</span></div>
+      <div class="day-title"><span class="d">D7</span>10月7日 周二<span class="city">格林德瓦 → Bern → 苏黎世</span></div>
       <div class="day-tools"><button class="tbtn day-nav" data-mode="driving">🚗 还车导航</button><span class="tbtn">展开</span></div>
     </div>
     <div class="day-body">
-      <div class="day-map"><svg viewBox="0 0 600 100" xmlns="http://www.w3.org/2000/svg"><path d="M40,50 Q200,30 300,45 T560,55" fill="none" stroke="var(--day6)" stroke-width="3" stroke-dasharray="6 4" stroke-linecap="round" filter="url(#rough)"/><circle cx="40" cy="50" r="5" fill="var(--day3)"/><text x="10" y="70" font-size="10" fill="var(--text2)">格林德瓦</text><text x="240" y="30" font-size="10" fill="var(--text2)">自驾2h</text><circle cx="560" cy="55" r="5" fill="var(--accent)"/><text x="500" y="48" font-size="10" fill="var(--text2)">ZRH还车</text></svg></div>
+      <div class="day-map"><svg viewBox="0 0 600 100" xmlns="http://www.w3.org/2000/svg"><path d="M40,50 Q120,62 220,55 Q400,28 560,55" fill="none" stroke="var(--day6)" stroke-width="3" stroke-dasharray="6 4" stroke-linecap="round" filter="url(#rough)"/><circle cx="40" cy="50" r="5" fill="var(--day3)"/><text x="10" y="70" font-size="10" fill="var(--text2)">格林德瓦</text><circle cx="220" cy="55" r="5" fill="var(--gold)"/><text x="200" y="48" font-size="9" fill="var(--text2)">Bern</text><text x="350" y="20" font-size="9" fill="var(--text2)">1h45</text><circle cx="560" cy="55" r="5" fill="var(--accent)"/><text x="500" y="48" font-size="10" fill="var(--text2)">ZRH还车</text></svg></div>
       <div class="timeline">
-        <div class="tl-item"><div class="tl-time">09:00</div><div class="tl-cont">退房，自驾 格林德瓦 → 苏黎世机场 ZRH（147km / 2h）</div></div>
-        <div class="tl-item"><div class="tl-time">~14:00</div><div class="tl-cont"><b>Europcar 还车</b>（ZRH，窗口22:00止，提前还省心）<br><span class="loc" data-dest="Europcar Zurich Airport return">导航·还车点</span></div></div>
-        <div class="tl-item"><div class="tl-time">15:00</div><div class="tl-cont">火车/打车到 <b>Holiday Inn Express</b> 放行李（Rümlang站近）<br><span class="loc" data-dest="Holiday Inn Express Zurich Airport Hofwisenstrasse 30 Rumlang">导航·酒店</span></div></div>
+        <div class="tl-item"><div class="tl-time">09:00</div><div class="tl-cont">退房，自驾 格林德瓦 → Bern（70km / 1h15min）</div></div>
+        <div class="tl-item"><div class="tl-time">10:15</div><div class="tl-cont"><b>Bern 老城</b>（UNESCO 世遗）<br>钟楼 <b>Zytglogge</b>（整点前到看木偶表演）<span class="loc" data-dest="Zytglogge Bern">导航</span> + <b>熊苑 Bärenpark</b>（免费看熊）<span class="loc" data-dest="Barenpark Bern">导航</span> + 联邦宫 Bundeshaus + 拱廊街午餐（欧洲最长6km购物拱廊）</div></div>
+        <div class="tl-item"><div class="tl-time">13:00</div><div class="tl-cont">自驾 Bern → 苏黎世机场 ZRH（140km / 1h45min，A1直达）</div></div>
+        <div class="tl-item"><div class="tl-time">~15:00</div><div class="tl-cont"><b>Europcar 还车</b>（ZRH，窗口22:00止）<br><span class="loc" data-dest="Europcar Zurich Airport return">导航·还车点</span></div></div>
+        <div class="tl-item"><div class="tl-time">15:30</div><div class="tl-cont">火车/打车到 <b>Holiday Inn Express</b> 放行李（Rümlang站近）<br><span class="loc" data-dest="Holiday Inn Express Zurich Airport Hofwisenstrasse 30 Rumlang">导航·酒店</span></div></div>
         <div class="tl-item"><div class="tl-time">16:00</div><div class="tl-cont">火车进苏黎世市区（Rümlang→主站约20min）<br>游 <b>老城 Niederdorf</b><span class="loc" data-dest="Niederdorf Zurich Old Town">导航</span> + <b>大教堂 Grossmünster</b>登塔<span class="loc" data-dest="Grossmunster Zurich">导航</span> + <b>林登霍夫 Lindenhof</b><span class="loc" data-dest="Lindenhof Zurich">导航</span></div></div>
         <div class="tl-item"><div class="tl-time">可选</div><div class="tl-cont"><b>苏黎世美术馆 Kunsthaus</b>（周二开，蒙克《呐喊》+印象派，CHF 26）<span class="loc" data-dest="Kunsthaus Zurich">导航</span></div></div>
         <div class="tl-item"><div class="tl-time">晚</div><div class="tl-cont">火车回 Holiday Inn Express</div></div>
       </div>
-      <div class="day-note">周二博物馆都开门 ✓。Rümlang→ZRH机场火车约3分钟，明天赶飞机从容。</div>
+      <div class="day-note">周二博物馆都开门 ✓。绕道 Bern 多开约1h但老城值得。还车推到15:00仍在窗口内。Rümlang→ZRH机场火车约3分钟，明天赶飞机从容。</div>
     </div>
   </div>
 
@@ -381,9 +386,8 @@ footer{text-align:center; color:var(--text2); font-size:.72rem; margin-top:40px;
   <ul>
     <li class="hot"><span class="pri">高</span><b>First 山 Adventure Package</b>（CHF 60/人，含2活动+无限缆车）— 旺季可能售罄，建议提前订</li>
     <li><span class="pri">高</span><b>瑞士高速 vignette</b>（CHF 40，Europcar 到店加购，贴挡风玻璃）</li>
-    <li><b>少女峰</b>（待定）— 如去须提前订座 CHF 10/人往返（5/1-10/31强制），上午班次易售罄</li>
-    <li>图恩湖游船 / 哈德昆缆车 / 布里恩茨游船 — 现场买票即可</li>
-    <li>行前1周查瑞士天气窗口，定 D4 少女峰 / D6 First 主日</li>
+    <li>图恩湖游船 / 哈德昆缆车 / 布里恩茨游船 / Trümmelbach瀑布 — 现场买票即可</li>
+    <li>行前1周查瑞士天气窗口，定 D6 First 主日 + D4 备选组合（用 <b>SRF Meteo</b> App）</li>
     <li>确认护照有效期（申根要求离境后仍有3个月）</li>
     <li>中国驾照 + 瑞士认可翻译件/公证（Europcar 取车用）</li>
     <li>下载 offline 地图（Google Maps 离线区 / Swiss Topo）</li>
@@ -400,10 +404,13 @@ footer{text-align:center; color:var(--text2); font-size:.72rem; margin-top:40px;
     <div class="tip"><h4>🚗 自驾</h4><p>瑞士靠右行驶。高速需 vignette 年贴纸（CHF 40）。山区隧道多、坡陡弯急，格林德瓦-因特拉肯段注意。停车缴费机认 Visa/MC，备零钱。城市停车超时罚款高。</p></div>
     <div class="tip"><h4>💳 支付</h4><p>瑞郎 CHF。信用卡普及（Visa/MC），部分小店/停车最低消费。备少量现金。汇率约 1 CHF ≈ 8.2 CNY。</p></div>
     <div class="tip"><h4>🔌 插座</h4><p>瑞士 J 型（三圆孔），与欧标不同。带转换头，或直接用 USB-C 充电。</p></div>
-    <div class="tip"><h4>🌡️ 天气与高反</h4><p>10月山区白天10-15°C，早晚5°C以下，First 顶约0-5°C，带防风外套+抓绒。少女峰顶3454m，高反风险，避免剧烈活动。</p></div>
+    <div class="tip"><h4>🌡️ 天气与高反</h4><p>10月山区白天10-15°C，早晚5°C以下，First顶约0-5°C，带防风外套+抓绒。山区高海拔徒步注意节奏，避免剧烈活动，量力而行。📱 装 <b>SRF Meteo</b> App（瑞士最准，7天预报+降水雷达+雪报，SRF出品），山区天气多变，D4/D6 行前看当天再定组合。</p></div>
     <div class="tip"><h4>📞 紧急</h4><p>通用急救 144 · 警察 117 · 道路救援 140。欧盟112也可拨。</p></div>
     <div class="tip"><h4>📶 网络</h4><p>建议行前买 eSIM（Swisscom/Salt）或开通国际漫游。山区信号弱，务必下离线地图。</p></div>
     <div class="tip"><h4>🚽 公厕</h4><p>火车站/商场免费，部分公厕投币 CHF 1-2。餐厅消费可借用。</p></div>
+    <div class="tip"><h4>💧 直饮水</h4><p>瑞士自来水达矿泉水品质，<b>所有喷泉均可直饮</b>（除非标"非饮用水"），不用买水，带个水瓶到处接。</p></div>
+    <div class="tip"><h4>🛒 省钱与超市</h4><p>餐厅贵，超市最划算：<b>Migros</b> / <b>Coop</b>（旅游区Coop有中国面条等）。<b>Landi</b> 买平价徒步用品。朋友提醒：芝士火锅贵且不好吃，瑞士人一年只吃一两次。</p></div>
+    <div class="tip"><h4>🥾 徒步装备</h4><p>冲锋衣/雨具/防晒(帽+SPF50+侧边墨镜)/水瓶+应急零食/轻薄手套围巾/坐垫/望远镜。10月山谷仍暖、山上或已积雪，穿衣分层。瀑布/峡谷穿防滑鞋。</p></div>
   </div>
 </section>
 
