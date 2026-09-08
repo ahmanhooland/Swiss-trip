@@ -122,6 +122,17 @@ h2 .bar{width:5px; height:22px; background:var(--accent); border-radius:3px}
 .w-city-btn:active{opacity:.7}
 .w-hint{font-size:.7rem; color:var(--text2); margin-top:8px; line-height:1.5}
 
+/* 每日行程天气卡 */
+.day-wx{font-size:.76rem; background:var(--bg2); border-radius:8px; padding:8px 11px; margin:8px 0 4px; display:flex; flex-wrap:wrap; gap:4px 11px; align-items:center; border-left:3px solid var(--accent); line-height:1.45}
+.day-wx .dw-tag{font-weight:600; color:var(--accent2)}
+.day-wx .dw-icon{font-size:1.35rem; line-height:1}
+.day-wx .dw-temp{font-weight:800; font-variant-numeric:tabular-nums; color:var(--text)}
+.day-wx .dw-lo{color:var(--text2); font-weight:600}
+.dw-cloth{flex-basis:100%; color:var(--text2); line-height:1.6; margin-top:3px; font-size:.73rem}
+.dw-cloth b{color:var(--text)}
+.dw-far{flex-basis:100%; color:var(--text2); font-size:.7rem; margin-top:1px}
+.dw-load{color:var(--text2); font-size:.76rem}
+
 footer{text-align:center; color:var(--text2); font-size:.72rem; margin-top:40px; padding-top:18px; border-top:1px solid var(--line)}
 </style>
 </head>
@@ -295,6 +306,7 @@ footer{text-align:center; color:var(--text2); font-size:.72rem; margin-top:40px;
       <div class="day-tools"><span class="tbtn">展开</span></div>
     </div>
     <div class="day-body">
+      <div class="day-wx" data-date="2026-10-01" data-lat="13.7563" data-lon="100.5018" data-name="曼谷·转机" data-hi="32" data-lo="25" data-rain="16"><span class="dw-tag">🌦️ 当日天气</span> <span class="dw-load">载入中…</span></div>
       <div class="timeline">
         <div class="tl-item"><div class="tl-time">21:05<br>+8</div><div class="tl-cont"><b>广州白云机场 CAN</b> 起飞 <b>TG679</b> → 曼谷<br><span class="loc" data-dest="Guangzhou Baiyun International Airport CAN">导航·广州机场</span></div></div>
         <div class="tl-item"><div class="tl-time">23:05<br>+7</div><div class="tl-cont">抵达曼谷素万那普 BKK，转机</div></div>
@@ -309,6 +321,7 @@ footer{text-align:center; color:var(--text2); font-size:.72rem; margin-top:40px;
       <div class="day-tools"><button class="tbtn day-nav" data-mode="driving">🚗 全天导航</button><span class="tbtn">展开</span></div>
     </div>
     <div class="day-body">
+      <div class="day-wx" data-date="2026-10-02" data-lat="47.0502" data-lon="8.3093" data-name="卢塞恩" data-hi="14" data-lo="7" data-rain="9"><span class="dw-tag">🌦️ 当日天气</span> <span class="dw-load">载入中…</span></div>
       <div class="day-map"><svg viewBox="0 0 600 120" xmlns="http://www.w3.org/2000/svg"><path d="M40,90 Q160,20 300,70 T560,40" fill="none" stroke="var(--day1)" stroke-width="3" stroke-linecap="round" filter="url(#rough)"/><circle cx="40" cy="90" r="5" fill="var(--accent)"/><text x="10" y="110" font-size="10" fill="var(--text2)">ZRH</text><circle cx="300" cy="70" r="5" fill="var(--day1)"/><text x="270" y="60" font-size="10" fill="var(--text2)">自驾50min</text><circle cx="560" cy="40" r="5" fill="var(--day1)"/><text x="510" y="35" font-size="10" fill="var(--text2)">卢塞恩</text></svg></div>
       <div class="timeline">
         <div class="tl-item"><div class="tl-time">07:50<br>+2</div><div class="tl-cont"><b>抵达苏黎世机场 ZRH</b>（当地时间）<br><span class="loc" data-dest="Zurich Airport ZRH">导航·苏黎世机场</span></div></div>
@@ -327,6 +340,7 @@ footer{text-align:center; color:var(--text2); font-size:.72rem; margin-top:40px;
       <div class="day-tools"><button class="tbtn day-nav" data-mode="driving">🚗 全天导航</button><span class="tbtn">展开</span></div>
     </div>
     <div class="day-body">
+      <div class="day-wx" data-date="2026-10-03" data-lat="46.6863" data-lon="7.8632" data-name="因特拉肯" data-hi="14" data-lo="6" data-rain="9"><span class="dw-tag">🌦️ 当日天气</span> <span class="dw-load">载入中…</span></div>
       <div class="day-map"><svg viewBox="0 0 600 120" xmlns="http://www.w3.org/2000/svg"><path d="M40,80 Q200,30 300,60 T560,50" fill="none" stroke="var(--day2)" stroke-width="3" stroke-linecap="round" filter="url(#rough)"/><circle cx="40" cy="80" r="5" fill="var(--day1)"/><text x="10" y="100" font-size="10" fill="var(--text2)">卢塞恩</text><text x="240" y="50" font-size="10" fill="var(--text2)">1h10min</text><circle cx="560" cy="50" r="5" fill="var(--day2)"/><text x="500" y="40" font-size="10" fill="var(--text2)">因特拉肯</text></svg></div>
       <div class="timeline">
         <div class="tl-item"><div class="tl-time">上午</div><div class="tl-cont">退房，自驾 卢塞恩 → 因特拉肯（68km / 1h10min，A8）</div></div>
@@ -344,6 +358,7 @@ footer{text-align:center; color:var(--text2); font-size:.72rem; margin-top:40px;
       <div class="day-tools"><button class="tbtn day-nav" data-mode="driving">🚗 全天导航</button><span class="tbtn">展开</span></div>
     </div>
     <div class="day-body">
+      <div class="day-wx" data-date="2026-10-04" data-lat="46.6863" data-lon="7.8632" data-name="因特拉肯" data-hi="14" data-lo="6" data-rain="9"><span class="dw-tag">🌦️ 当日天气</span> <span class="dw-load">载入中…</span></div>
       <div class="timeline">
         <div class="tl-item"><div class="tl-time">上午</div><div class="tl-cont">自驾经 Lauterbrunnen 谷：<b>Trümmelbach 地下冰川瀑布</b><span class="loc" data-dest="Trummelbachfalle Lauterbrunnen">导航</span>（欧洲唯一入山地下瀑布，2万升/秒冰川融水，隧道电梯入山，现场买票，4-11月开放，4岁以下禁入）</div></div>
         <div class="tl-item"><div class="tl-time"></div><div class="tl-cont">顺路 <b>施陶巴赫瀑布 Staubachfall</b>（欧洲最高自由落体瀑布之一）<span class="loc" data-dest="Staubbachfall Lauterbrunnen">导航</span></div></div>
@@ -361,6 +376,7 @@ footer{text-align:center; color:var(--text2); font-size:.72rem; margin-top:40px;
       <div class="day-tools"><button class="tbtn day-nav" data-mode="driving">🚗 全天导航</button><span class="tbtn">展开</span></div>
     </div>
     <div class="day-body">
+      <div class="day-wx" data-date="2026-10-05" data-lat="46.6089" data-lon="7.9419" data-name="Männlichen 2343m" data-alt="2343" data-hi="3" data-lo="-4" data-rain="12"><span class="dw-tag">🌦️ 当日天气</span> <span class="dw-load">载入中…</span></div>
       <div class="day-map"><svg viewBox="0 0 600 100" xmlns="http://www.w3.org/2000/svg"><path d="M40,50 Q200,30 300,45 T560,55" fill="none" stroke="var(--day3)" stroke-width="3" stroke-linecap="round" filter="url(#rough)"/><circle cx="40" cy="50" r="5" fill="var(--day2)"/><text x="10" y="70" font-size="10" fill="var(--text2)">因特拉肯</text><text x="250" y="30" font-size="10" fill="var(--text2)">30min</text><circle cx="560" cy="55" r="5" fill="var(--day3)"/><text x="490" y="48" font-size="10" fill="var(--text2)">格林德瓦</text></svg></div>
       <div class="timeline">
         <div class="tl-item"><div class="tl-time">上午</div><div class="tl-cont">退房，自驾 因特拉肯 → 格林德瓦（21km / 30min）</div></div>
@@ -378,6 +394,7 @@ footer{text-align:center; color:var(--text2); font-size:.72rem; margin-top:40px;
       <div class="day-tools"><span class="tbtn">展开</span></div>
     </div>
     <div class="day-body">
+      <div class="day-wx" data-date="2026-10-06" data-lat="46.6624" data-lon="8.0103" data-name="First山顶 2168m" data-alt="2168" data-hi="4" data-lo="-3" data-rain="12"><span class="dw-tag">🌦️ 当日天气</span> <span class="dw-load">载入中…</span></div>
       <div class="day-map"><svg viewBox="0 0 600 130" xmlns="http://www.w3.org/2000/svg"><path d="M40,110 L120,30 L260,30 L340,100 L460,70 L560,110" fill="none" stroke="var(--day6)" stroke-width="3" stroke-linecap="round" filter="url(#rough)"/><circle cx="40" cy="110" r="5" fill="var(--day6)"/><text x="10" y="128" font-size="10" fill="var(--text2)">镇/Terminal</text><circle cx="120" cy="30" r="5" fill="var(--day6)"/><text x="100" y="20" font-size="10" fill="var(--text2)">First顶</text><circle cx="260" cy="30" r="4" fill="var(--gold)"/><text x="245" y="20" font-size="9" fill="var(--text2)">Bachalpsee</text><circle cx="340" cy="100" r="5" fill="var(--day6)"/><text x="330" y="120" font-size="9" fill="var(--text2)">Schreckfeld</text><circle cx="460" cy="70" r="5" fill="var(--day6)"/><text x="445" y="60" font-size="9" fill="var(--text2)">Bort(卡丁车终点)</text></svg></div>
       <div class="timeline">
         <div class="tl-item"><div class="tl-time">08:30</div><div class="tl-cont">Grindelwald Terminal 缆车上 <b>First</b>（25min）</div></div>
@@ -398,6 +415,7 @@ footer{text-align:center; color:var(--text2); font-size:.72rem; margin-top:40px;
       <div class="day-tools"><button class="tbtn day-nav" data-mode="driving">🚗 全天导航</button><span class="tbtn">展开</span></div>
     </div>
     <div class="day-body">
+      <div class="day-wx" data-date="2026-10-07" data-lat="46.9480" data-lon="7.4474" data-name="Bern" data-hi="14" data-lo="6" data-rain="9"><span class="dw-tag">🌦️ 当日天气</span> <span class="dw-load">载入中…</span></div>
       <div class="day-map"><svg viewBox="0 0 600 100" xmlns="http://www.w3.org/2000/svg"><path d="M40,50 Q120,62 220,55 Q400,28 560,55" fill="none" stroke="var(--day6)" stroke-width="3" stroke-dasharray="6 4" stroke-linecap="round" filter="url(#rough)"/><circle cx="40" cy="50" r="5" fill="var(--day3)"/><text x="10" y="70" font-size="10" fill="var(--text2)">格林德瓦</text><circle cx="220" cy="55" r="5" fill="var(--gold)"/><text x="200" y="48" font-size="9" fill="var(--text2)">Bern</text><text x="350" y="20" font-size="9" fill="var(--text2)">1h45</text><circle cx="560" cy="55" r="5" fill="var(--accent)"/><text x="500" y="48" font-size="10" fill="var(--text2)">机场/酒店</text></svg></div>
       <div class="timeline">
         <div class="tl-item"><div class="tl-time">09:00</div><div class="tl-cont">退房，自驾 格林德瓦 → Bern（70km / 1h15min）</div></div>
@@ -420,6 +438,7 @@ footer{text-align:center; color:var(--text2); font-size:.72rem; margin-top:40px;
       <div class="day-tools"><span class="tbtn">展开</span></div>
     </div>
     <div class="day-body">
+      <div class="day-wx" data-date="2026-10-08" data-lat="47.3769" data-lon="8.5417" data-name="苏黎世" data-hi="14" data-lo="7" data-rain="9"><span class="dw-tag">🌦️ 当日天气</span> <span class="dw-load">载入中…</span></div>
       <div class="timeline">
         <div class="tl-item"><div class="tl-time">上午</div><div class="tl-cont">Holiday Inn 退房，火车3min到 ZRH 机场</div></div>
         <div class="tl-item"><div class="tl-time">~11:00</div><div class="tl-cont">抵机场值机（国际航班建议提前2.5h）</div></div>
@@ -435,6 +454,7 @@ footer{text-align:center; color:var(--text2); font-size:.72rem; margin-top:40px;
       <div class="day-tools"><span class="tbtn">展开</span></div>
     </div>
     <div class="day-body">
+      <div class="day-wx" data-date="2026-10-09" data-lat="23.1291" data-lon="113.2644" data-name="广州" data-hi="28" data-lo="21" data-rain="6"><span class="dw-tag">🌦️ 当日天气</span> <span class="dw-load">载入中…</span></div>
       <div class="timeline">
         <div class="tl-item"><div class="tl-time">10:30<br>+7</div><div class="tl-cont"><b>曼谷 BKK 起飞 TG668</b></div></div>
         <div class="tl-item"><div class="tl-time">14:30<br>+8</div><div class="tl-cont"><b>抵达广州白云 CAN</b>，行程结束 🏁</div></div>
@@ -614,6 +634,74 @@ document.querySelectorAll('.w-city-btn').forEach(btn=>{
 });
 geoLocate();
 setInterval(()=>{const a=document.querySelector('.w-city-btn.active');if(a){fetchWeather(a.dataset.lat,a.dataset.lon,a.dataset.name,a.dataset.alt?parseInt(a.dataset.alt):null);}else{geoLocate();}},600000);
+
+// ===== 每日行程天气（精确预报 / 10月气候均值 fallback）=====
+function dwDaysAway(dateStr){
+  const tgt=new Date(dateStr+'T12:00:00');
+  return Math.ceil((tgt-new Date())/86400000);
+}
+// 10月气候码：低/高温判断雨雪图标 + 穿衣基线
+function dwClimateIcon(hi,lo,rain){
+  if(lo<0||hi<5) return rain>=12?'🌨️':'❄️';
+  if(rain>=12) return '🌦️';
+  if(rain>=9) return '⛅';
+  return '🌤️';
+}
+function dwClimateCode(hi,lo,rain){
+  if(lo<0||hi<5) return 73;        // 中雪基线
+  if(rain>=12) return 63;          // 中雨基线
+  if(rain>=9) return 61;           // 小雨基线
+  return 2;                        // 多云
+}
+async function loadDayWeather(){
+  const slots=document.querySelectorAll('.day-wx');
+  for(const s of slots){
+    const date=s.dataset.date, lat=s.dataset.lat, lon=s.dataset.lon;
+    const name=s.dataset.name, alt=s.dataset.alt?parseInt(s.dataset.alt):null;
+    const hi=+s.dataset.hi, lo=+s.dataset.lo, rain=+s.dataset.rain;
+    const away=dwDaysAway(date);
+    if(away<0){s.innerHTML='<span class="dw-tag">✅ '+name+' · 已出行</span>';continue;}
+    // 气候均值 fallback（>16天 或 预报拉取失败时复用）
+    const renderClimate=(note)=>{
+      const ico=dwClimateIcon(hi,lo,rain), code=dwClimateCode(hi,lo,rain);
+      const cA=clothAdvice((hi+lo)/2,null,code,rain>=12?18:8,3,alt);
+      s.innerHTML='<span class="dw-tag">🌦️ '+name+' · 当日天气</span>'+
+        '<span class="dw-icon">'+ico+'</span>'+
+        '<span class="dw-temp">'+hi+'°</span><span class="dw-lo">/'+lo+'°C</span>'+
+        '<span>10月气候均值</span>'+
+        '<span>🌧️ 约'+rain+'天/月有雨</span>'+
+        '<div class="dw-far">距出行 '+away+' 天 · '+note+(alt&&alt>=1500?' · 🏔️'+alt+'m':'')+'</div>'+
+        '<div class="dw-cloth">'+cA+'</div>';
+    };
+    if(away>16){renderClimate('10月气候均值，临近16天自动切换精确预报');continue;}
+    // 精确预报
+    s.innerHTML='<span class="dw-tag">🌦️ '+name+' · 当日天气</span> <span class="dw-load">拉取精确预报…</span>';
+    try{
+      const u='https://api.open-meteo.com/v1/forecast?latitude='+lat+'&longitude='+lon+
+        '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,wind_speed_10m_max,uv_index_max'+
+        '&timezone=auto&start_date='+date+'&end_date='+date;
+      const r=await fetch(u); if(!r.ok) throw 0;
+      const d=await r.json(); const x=d.daily;
+      const c=x.weather_code[0], tHi=x.temperature_2m_max[0], tLo=x.temperature_2m_min[0];
+      const pp=x.precipitation_probability_max[0], w=x.wind_speed_10m_max[0], uv=x.uv_index_max[0];
+      const tAvg=(tHi+tLo)/2;
+      const cA=clothAdvice(tAvg,null,c,w,uv,alt);
+      const rainTag=(pp!=null&&pp>=0)?('🌧️ 降水概率 '+pp+'%'):'';
+      s.innerHTML='<span class="dw-tag">🌦️ '+name+' · 当日天气</span>'+
+        '<span class="dw-icon">'+(WMOI[c]||'🌡️')+'</span>'+
+        '<span class="dw-temp">'+Math.round(tHi)+'°</span><span class="dw-lo">/'+Math.round(tLo)+'°C</span>'+
+        '<span>'+(WMO[c]||'—')+'</span>'+
+        (rainTag?'<span>'+rainTag+'</span>':'')+
+        '<span>💨 '+Math.round(w)+'km/h</span>'+
+        (uv!=null?'<span>☀️UV '+uv+'</span>':'')+
+        '<div class="dw-far">距出行 '+away+' 天 · 精确预报（Open-Meteo）'+(alt&&alt>=1500?' · 🏔️'+alt+'m':'')+'</div>'+
+        '<div class="dw-cloth">'+cA+'</div>';
+    }catch(e){renderClimate('10月气候均值（精确预报暂不可用）');}
+    await new Promise(r=>setTimeout(r,250));
+  }
+}
+loadDayWeather();
+setInterval(loadDayWeather,1800000);
 
 // ===== 地点点击 → Google Maps 导航 =====
 function gnav(dest, mode){
