@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#d52b1e">
+<title>瑞士9日 · 旅行手册</title>
+<style>
+:root{
+  --bg:#f3f0e9; --bg2:#ece7dc; --card:#ffffff; --text:#2b2b2b; --text2:#6b6b6b;
+  --line:#e0dac9; --accent:#c8102e; --accent2:#2f6b3e; --gold:#b8860b;
+  --shadow:0 6px 24px rgba(60,40,20,.10); --radius:18px;
+  --day1:#c8102e; --day2:#2f6b3e; --day3:#1f6fb2; --day4:#b8860b; --day5:#8e44ad; --day6:#e67e22; --day7:#16a085;
+}
+[data-theme="dark"]{
+  --bg:#15171c; --bg2:#1c1f26; --card:#21252d; --text:#e9e6df; --text2:#9aa0aa;
+  --line:#2d323c; --accent:#ff5470; --accent2:#5cd6a0; --gold:#e0b04a;
+  --shadow:0 8px 28px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{margin:0; font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+  background:var(--bg); color:var(--text); line-height:1.65; transition:background .4s,color .4s;
+  -webkit-text-size-adjust:100%}
+.wrap{max-width:760px; margin:0 auto; padding:0 16px 60px}
+section{margin-top:28px}
+h2{font-size:1.32rem; margin:0 0 14px; display:flex; align-items:center; gap:8px}
+h2 .bar{width:5px; height:22px; background:var(--accent); border-radius:3px}
+.sub{color:var(--text2); font-size:.82rem; margin-top:4px}
+
+/* 倒计时卡片 */
+#now-card{background:linear-gradient(135deg,var(--accent),#a00d24); color:#fff; border-radius:var(--radius);
+  padding:26px 22px; box-shadow:var(--shadow); position:relative; overflow:hidden}
+[data-theme="dark"] #now-card{background:linear-gradient(135deg,#3a2030,#1a1018)}
+#now-card::before{content:""; position:absolute; right:-40px; top:-40px; width:160px; height:160px;
+  background:rgba(255,255,255,.08); border-radius:50%}
+.now-label{font-size:.82rem; opacity:.92; letter-spacing:.5px}
+.now-event{font-size:1.18rem; font-weight:600; margin:6px 0 4px}
+.now-when{font-size:.82rem; opacity:.9}
+.countdown{display:flex; gap:8px; margin-top:14px; flex-wrap:wrap}
+.cd-unit{background:rgba(255,255,255,.16); border-radius:12px; padding:8px 6px; min-width:64px; text-align:center; flex:1}
+[data-theme="dark"] .cd-unit{background:rgba(255,255,255,.08)}
+.cd-num{font-size:2rem; font-weight:800; font-variant-numeric:tabular-nums; line-height:1}
+.cd-lbl{font-size:.68rem; opacity:.85; margin-top:2px}
+
+/* SVG 地图 */
+#overview-map{background:var(--card); border-radius:var(--radius); padding:14px; box-shadow:var(--shadow)}
+.map-svg{width:100%; height:auto; display:block}
+.legend{display:flex; flex-wrap:wrap; gap:10px 14px; margin-top:12px; font-size:.78rem}
+.legend span{display:inline-flex; align-items:center; gap:5px}
+.legend i{width:14px; height:4px; border-radius:2px; display:inline-block}
+
+/* 订单卡 */
+.orders{display:grid; gap:12px}
+.order{background:var(--card); border-radius:14px; padding:16px; box-shadow:var(--shadow); border-left:4px solid var(--accent2)}
+.order h3{margin:0 0 10px; font-size:1.02rem}
+.order .tag{display:inline-block; font-size:.7rem; background:var(--bg2); color:var(--text2); padding:2px 8px; border-radius:20px; margin-right:6px}
+.order .row{display:flex; justify-content:space-between; gap:10px; padding:4px 0; font-size:.84rem; border-bottom:1px dashed var(--line)}
+.order .row:last-child{border-bottom:0}
+.order .row .k{color:var(--text2); flex-shrink:0}
+.order .row .v{text-align:right; word-break:break-word}
+
+/* 逐日行程 */
+.day{background:var(--card); border-radius:var(--radius); margin-bottom:14px; overflow:hidden; box-shadow:var(--shadow)}
+.day-head{display:flex; align-items:center; justify-content:space-between; padding:14px 16px; cursor:pointer; gap:10px}
+.day-head:active{background:var(--bg2)}
+.day-title{font-size:1rem; font-weight:700}
+.day-title .d{color:var(--accent); margin-right:6px}
+.day-title .city{color:var(--text2); font-weight:400; font-size:.84rem; margin-left:4px}
+.day-tools{display:flex; gap:6px}
+.tbtn{font-size:.72rem; border:1px solid var(--line); background:var(--bg2); color:var(--text); padding:5px 9px; border-radius:8px; cursor:pointer; white-space:nowrap}
+.tbtn:active{background:var(--line)}
+.day-body{display:none; padding:0 16px 16px}
+.day.open .day-body{display:block}
+.day-map{margin:10px 0; border-radius:10px; overflow:hidden; background:var(--bg2)}
+.day-map svg{width:100%; height:auto; display:block}
+.timeline{position:relative; padding-left:0}
+.tl-item{display:flex; gap:12px; padding:8px 0; border-bottom:1px dashed var(--line)}
+.tl-item:last-child{border-bottom:0}
+.tl-time{flex-shrink:0; width:62px; font-variant-numeric:tabular-nums; font-size:.82rem; color:var(--accent2); font-weight:600; padding-top:2px}
+[data-theme="dark"] .tl-time{color:var(--accent2)}
+.tl-cont{flex:1; font-size:.88rem}
+.tl-cont b{font-weight:600}
+.tl-cont .badge{display:inline-block; font-size:.68rem; background:#c8102e; color:#fff; padding:1px 7px; border-radius:8px; margin-left:4px; vertical-align:middle}
+.loc{color:var(--accent); cursor:pointer; border-bottom:1px dotted var(--accent)}
+.loc:active{opacity:.6}
+.day-note{margin-top:8px; font-size:.78rem; color:var(--text2); background:var(--bg2); padding:8px 10px; border-radius:8px}
+
+/* 待办 */
+.todo ul{list-style:none; padding:0; margin:0}
+.todo li{padding:9px 0 9px 30px; position:relative; border-bottom:1px dashed var(--line); font-size:.9rem}
+.todo li:last-child{border-bottom:0}
+.todo li::before{content:""; position:absolute; left:4px; top:13px; width:14px; height:14px; border:2px solid var(--accent); border-radius:4px}
+.todo li.hot::before{background:var(--accent); opacity:.3}
+.todo .pri{font-size:.7rem; background:var(--accent); color:#fff; padding:1px 6px; border-radius:6px; margin-right:6px}
+
+/* 贴士 */
+.tips{display:grid; gap:10px}
+.tip{background:var(--card); border-radius:12px; padding:14px; box-shadow:var(--shadow)}
+.tip h4{margin:0 0 6px; font-size:.92rem; color:var(--accent2)}
+.tip p{margin:0; font-size:.82rem; color:var(--text2)}
+
+footer{text-align:center; color:var(--text2); font-size:.72rem; margin-top:40px; padding-top:18px; border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- 1. 此刻关注 -->
+<section id="now">
+  <div id="now-card">
+    <div class="now-label">此刻关注 · NEXT</div>
+    <div class="now-event" id="next-name">—</div>
+    <div class="now-when" id="next-when">—</div>
+    <div class="countdown" id="cd">
+      <div class="cd-unit"><div class="cd-num" id="cd-d">00</div><div class="cd-lbl">天</div></div>
+      <div class="cd-unit"><div class="cd-num" id="cd-h">00</div><div class="cd-lbl">时</div></div>
+      <div class="cd-unit"><div class="cd-num" id="cd-m">00</div><div class="cd-lbl">分</div></div>
+      <div class="cd-unit"><div class="cd-num" id="cd-s">00</div><div class="cd-lbl">秒</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. 行程总览地图 -->
+<section>
+  <h2><span class="bar"></span>行程总览</h2>
+  <div id="overview-map">
+    <svg class="map-svg" viewBox="0 0 800 460" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="3" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="3.2"/>
+        </filter>
+        <marker id="arr" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill="currentColor"/>
+        </marker>
+      </defs>
+      <!-- 瑞士简化轮廓 手绘风 -->
+      <path filter="url(#rough)" d="M150,90 C200,70 260,60 320,72 C360,55 420,58 470,80 C520,70 580,85 630,110 C680,120 710,150 700,190 C720,230 700,270 660,290 C640,330 600,350 560,340 C540,380 490,400 450,390 C430,410 380,415 340,400 C300,420 250,410 220,380 C170,370 130,350 120,310 C80,290 70,250 90,220 C70,190 80,150 110,130 C100,110 120,95 150,90 Z" fill="var(--bg2)" stroke="var(--text2)" stroke-width="1.5" opacity="0.55"/>
+      <!-- 湖 -->
+      <ellipse cx="300" cy="270" rx="22" ry="8" fill="#7fb3d5" opacity=".5" filter="url(#rough)"/>
+      <ellipse cx="360" cy="290" rx="18" ry="6" fill="#7fb3d5" opacity=".5" filter="url(#rough)"/>
+      <!-- 路线 D2 ZRH→卢塞恩 -->
+      <path d="M560,150 Q500,170 470,210" fill="none" stroke="var(--day1)" stroke-width="3.5" stroke-linecap="round" filter="url(#rough)" marker-end="url(#arr)"/>
+      <!-- D3 卢塞恩→因特拉肯 -->
+      <path d="M470,210 Q400,250 360,290" fill="none" stroke="var(--day2)" stroke-width="3.5" stroke-linecap="round" filter="url(#rough)" marker-end="url(#arr)"/>
+      <!-- D5 因特拉肯→格林德瓦 -->
+      <path d="M360,290 Q350,300 340,295" fill="none" stroke="var(--day3)" stroke-width="3.5" stroke-linecap="round" filter="url(#rough)" marker-end="url(#arr)"/>
+      <!-- D7 格林德瓦→ZRH -->
+      <path d="M340,295 Q450,230 560,150" fill="none" stroke="var(--day6)" stroke-width="3.5" stroke-dasharray="6 4" stroke-linecap="round" filter="url(#rough)" marker-end="url(#arr)"/>
+      <!-- 城市点 -->
+      <g font-size="11" font-family="sans-serif" fill="var(--text)">
+        <circle cx="560" cy="150" r="6" fill="var(--accent)"/><text x="570" y="146">苏黎世 ZRH ✈</text>
+        <circle cx="470" cy="210" r="5.5" fill="var(--day1)"/><text x="478" y="206">卢塞恩 · D2住</text>
+        <circle cx="360" cy="290" r="5.5" fill="var(--day2)"/><text x="368" y="286">因特拉肯 · D3-D4住</text>
+        <circle cx="340" cy="295" r="5.5" fill="var(--day3)"/><text x="270" y="312">格林德瓦 · D5-D6住</text>
+      </g>
+      <text x="40" y="40" font-size="13" font-family="serif" font-style="italic" fill="var(--text2)">Schweiz · 瑞士</text>
+    </svg>
+    <div class="legend">
+      <span><i style="background:var(--day1)"></i>D2 苏黎世→卢塞恩</span>
+      <span><i style="background:var(--day2)"></i>D3 卢塞恩→因特拉肯</span>
+      <span><i style="background:var(--day3)"></i>D5 因特拉肯→格林德瓦</span>
+      <span><i style="background:var(--day6)"></i>D7 格林德瓦→苏黎世</span>
+    </div>
+  </div>
+</section>
+
+<!-- 3. 已确认订单 -->
+<section>
+  <h2><span class="bar"></span>已确认订单</h2>
+  <div class="orders">
+    <div class="order" style="border-left-color:var(--gold)">
+      <h3>✈️ 机票 · Thai Airways TG</h3>
+      <div class="row"><span class="k">D1 10/1</span><span class="v"><b>TG679</b> 广州CAN 21:05(+8) → 曼谷BKK 23:05(+7)　T2→MAIN</span></div>
+      <div class="row"><span class="k">D2 10/2</span><span class="v"><b>TG970</b> 曼谷BKK 01:05(+7) → 苏黎世ZRH 07:50(+2)　MAIN→T2</span></div>
+      <div class="row"><span class="k">D8 10/8</span><span class="v"><b>TG971</b> 苏黎世ZRH 13:30(+2) → 曼谷BKK 05:30+1(+7)　T2→MAIN</span></div>
+      <div class="row"><span class="k">D9 10/9</span><span class="v"><b>TG668</b> 曼谷BKK 10:30(+7) → 广州CAN 14:30(+8)　MAIN→T2</span></div>
+      <div class="row"><span class="k">旅客</span><span class="v">2人 · 经济舱</span></div>
+    </div>
+    <div class="order" style="border-left-color:var(--day3)">
+      <h3>🚗 租车 · Europcar</h3>
+      <div class="row"><span class="k">取车</span><span class="v">10/2 苏黎世机场 ZRH · 弹性窗口 07:00起</span></div>
+      <div class="row"><span class="k">还车</span><span class="v">10/7 苏黎世机场 ZRH · 弹性窗口 22:00止</span></div>
+      <div class="row"><span class="k">车型</span><span class="v">大众 Polo 或同级 · 自动挡 · 5座</span></div>
+      <div class="row"><span class="k">保险</span><span class="v">超级补充全险(碰撞/防盗/第三者/无限里程) 起赔额 CHF 2500</span></div>
+      <div class="row"><span class="k">门店</span><span class="v">苏黎世机场 Europcar 柜台</span></div>
+    </div>
+    <div class="order">
+      <h3>🏨 酒店 1/4 · 卢塞恩</h3>
+      <div class="row"><span class="k">日期</span><span class="v">10/2 入住 → 10/3 退房（1晚）</span></div>
+      <div class="row"><span class="k">酒店</span><span class="v">Hotel Seeburg · 标准双人间·森林景观</span></div>
+      <div class="row"><span class="k">地址</span><span class="v">Seeburgstrasse 59-61, 6006 Luzern</span></div>
+      <div class="row"><span class="k">电话</span><span class="v"><a class="loc" data-dest="Hotel Seeburg Seeburgstrasse 59-61 6006 Luzern" href="javascript:void(0)">+41 41 375 55 55</a></span></div>
+      <div class="row"><span class="k">备注</span><span class="v">含停车位 · 不含城市税</span></div>
+    </div>
+    <div class="order">
+      <h3>🏨 酒店 2/4 · 因特拉肯</h3>
+      <div class="row"><span class="k">日期</span><span class="v">10/3 入住 → 10/5 退房（2晚）</span></div>
+      <div class="row"><span class="k">酒店</span><span class="v">Neuhaus Golf- & Strandhotel · 标准双人间</span></div>
+      <div class="row"><span class="k">地址</span><span class="v">Seestrasse 121, 3800 Unterseen (Interlaken)</span></div>
+      <div class="row"><span class="k">电话</span><span class="v"><a class="loc" data-dest="Neuhaus Golf Strandhotel Seestrasse 121 3800 Unterseen" href="javascript:void(0)">+41 33 822 82 82</a></span></div>
+      <div class="row"><span class="k">备注</span><span class="v">含早 · 免费停车 · 图恩湖边</span></div>
+    </div>
+    <div class="order">
+      <h3>🏨 酒店 3/4 · 格林德瓦</h3>
+      <div class="row"><span class="k">日期</span><span class="v">10/5 入住 → 10/7 退房（2晚）</span></div>
+      <div class="row"><span class="k">酒店</span><span class="v">Boutique Hotel Glacier · 艾格峰景观房</span></div>
+      <div class="row"><span class="k">地址</span><span class="v">Endweg 55, 3818 Grindelwald</span></div>
+      <div class="row"><span class="k">电话</span><span class="v"><a class="loc" data-dest="Boutique Hotel Glacier Endweg 55 3818 Grindelwald" href="javascript:void(0)">+41 33 853 10 04</a></span></div>
+      <div class="row"><span class="k">备注</span><span class="v">含早 · 含停车 · 不含税费</span></div>
+    </div>
+    <div class="order">
+      <h3>🏨 酒店 4/4 · 苏黎世机场</h3>
+      <div class="row"><span class="k">日期</span><span class="v">10/7 入住 → 10/8 退房（1晚）</span></div>
+      <div class="row"><span class="k">酒店</span><span class="v">Holiday Inn Express Zürich Airport</span></div>
+      <div class="row"><span class="k">地址</span><span class="v">Hofwisenstrasse 30, 8153 Rümlang</span></div>
+      <div class="row"><span class="k">电话</span><span class="v"><a class="loc" data-dest="Holiday Inn Express Zurich Airport Hofwisenstrasse 30 8153 Rumlang" href="javascript:void(0)">+41 44 809 3400</a></span></div>
+      <div class="row"><span class="k">备注</span><span class="v">含早 · 机场近 · 不含城市税</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. 逐日行程 -->
+<section>
+  <h2><span class="bar"></span>逐日行程</h2>
+  <p class="sub">点击日期展开当日路线地图与时间轴 · 地点可点击唤起导航 · 🚗全天导航为自驾多点路线</p>
+
+  <div class="day" data-day="1">
+    <div class="day-head" onclick="this.parentElement.classList.toggle('open')">
+      <div class="day-title"><span class="d">D1</span>10月1日 周三<span class="city">广州 → 曼谷转机</span></div>
+      <div class="day-tools"><span class="tbtn">展开</span></div>
+    </div>
+    <div class="day-body">
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-time">21:05<br>+8</div><div class="tl-cont"><b>广州白云机场 CAN</b> 起飞 <b>TG679</b> → 曼谷<br><span class="loc" data-dest="Guangzhou Baiyun International Airport CAN">导航·广州机场</span></div></div>
+        <div class="tl-item"><div class="tl-time">23:05<br>+7</div><div class="tl-cont">抵达曼谷素万那普 BKK，转机</div></div>
+      </div>
+      <div class="day-note">✈️ 跨夜飞行，建议机上休息。曼谷转机不出机场。</div>
+    </div>
+  </div>
+
+  <div class="day" data-day="2">
+    <div class="day-head" onclick="this.parentElement.classList.toggle('open')">
+      <div class="day-title"><span class="d">D2</span>10月2日 周四<span class="city">抵苏黎世 → 卢塞恩</span></div>
+      <div class="day-tools"><button class="tbtn day-nav" data-mode="driving">🚗 全天导航</button><span class="tbtn">展开</span></div>
+    </div>
+    <div class="day-body">
+      <div class="day-map"><svg viewBox="0 0 600 120" xmlns="http://www.w3.org/2000/svg"><path d="M40,90 Q160,20 300,70 T560,40" fill="none" stroke="var(--day1)" stroke-width="3" stroke-linecap="round" filter="url(#rough)"/><circle cx="40" cy="90" r="5" fill="var(--accent)"/><text x="10" y="110" font-size="10" fill="var(--text2)">ZRH</text><circle cx="300" cy="70" r="5" fill="var(--day1)"/><text x="270" y="60" font-size="10" fill="var(--text2)">自驾50min</text><circle cx="560" cy="40" r="5" fill="var(--day1)"/><text x="510" y="35" font-size="10" fill="var(--text2)">卢塞恩</text></svg></div>
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-time">07:50<br>+2</div><div class="tl-cont"><b>抵达苏黎世机场 ZRH</b>（当地时间）<br><span class="loc" data-dest="Zurich Airport ZRH">导航·苏黎世机场</span></div></div>
+        <div class="tl-item"><div class="tl-time">~09:30</div><div class="tl-cont">入境+取行李后，<b>Europcar 取车</b><br><span class="loc" data-dest="Europcar Zurich Airport">导航·Europcar柜台</span></div></div>
+        <div class="tl-item"><div class="tl-time">10:20</div><div class="tl-cont">自驾 ZRH → 卢塞恩（65km / 50min）</div></div>
+        <div class="tl-item"><div class="tl-time">11:30</div><div class="tl-cont">抵卢塞恩，停车。游 <b>卡贝尔廊桥</b><span class="loc" data-dest="Chapel Bridge Lucerne">导航</span> + <b>狮子纪念碑</b><span class="loc" data-dest="Lion Monument Lucerne">导航</span> + 老城漫步</div></div>
+        <div class="tl-item"><div class="tl-time">傍晚</div><div class="tl-cont">入住 <b>Hotel Seeburg</b>（湖畔，含停车位）<br><span class="loc" data-dest="Hotel Seeburg Seeburgstrasse 59-61 6006 Luzern">导航·酒店</span></div></div>
+      </div>
+      <div class="day-note">📌 瑞士高速需 vignette 贴纸（CHF 40，到店加购，见待办）</div>
+    </div>
+  </div>
+
+  <div class="day" data-day="3">
+    <div class="day-head" onclick="this.parentElement.classList.toggle('open')">
+      <div class="day-title"><span class="d">D3</span>10月3日 周五<span class="city">卢塞恩 → 因特拉肯</span></div>
+      <div class="day-tools"><button class="tbtn day-nav" data-mode="driving">🚗 全天导航</button><span class="tbtn">展开</span></div>
+    </div>
+    <div class="day-body">
+      <div class="day-map"><svg viewBox="0 0 600 120" xmlns="http://www.w3.org/2000/svg"><path d="M40,80 Q200,30 300,60 T560,50" fill="none" stroke="var(--day2)" stroke-width="3" stroke-linecap="round" filter="url(#rough)"/><circle cx="40" cy="80" r="5" fill="var(--day1)"/><text x="10" y="100" font-size="10" fill="var(--text2)">卢塞恩</text><text x="240" y="50" font-size="10" fill="var(--text2)">1h10min</text><circle cx="560" cy="50" r="5" fill="var(--day2)"/><text x="500" y="40" font-size="10" fill="var(--text2)">因特拉肯</text></svg></div>
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-time">上午</div><div class="tl-cont">退房，自驾 卢塞恩 → 因特拉肯（68km / 1h10min，A8）</div></div>
+        <div class="tl-item"><div class="tl-time">中午</div><div class="tl-cont">抵因特拉肯，入住 <b>Neuhaus Golf-&Strandhotel</b>（图恩湖边，免费停车）<br><span class="loc" data-dest="Neuhaus Golf Strandhotel Seestrasse 121 3800 Unterseen">导航·酒店</span></div></div>
+        <div class="tl-item"><div class="tl-time">下午</div><div class="tl-cont"><b>图恩湖游船</b>（建议到 Spiez 小城堡方向）<span class="loc" data-dest="Lake Thun cruise Interlaken">导航</span> · 或 <b>哈德昆 Harder Kulm</b> 缆车看两湖观景<span class="loc" data-dest="Harder Kulm Interlaken">导航</span></div></div>
+        <div class="tl-item"><div class="tl-time">晚</div><div class="tl-cont">酒店湖边餐厅晚餐（看日落）</div></div>
+      </div>
+      <div class="day-note">🎫 游船/缆车现场买票即可。哈德昆缆车末班约17:10，注意时间。</div>
+    </div>
+  </div>
+
+  <div class="day" data-day="4">
+    <div class="day-head" onclick="this.parentElement.classList.toggle('open')">
+      <div class="day-title"><span class="d">D4</span>10月4日 周六<span class="city">因特拉肯周边一日</span></div>
+      <div class="day-tools"><button class="tbtn day-nav" data-mode="driving">🚗 全天导航</button><span class="tbtn">展开</span></div>
+    </div>
+    <div class="day-body">
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-time">全天</div><div class="tl-cont">因特拉肯区域机动日。推荐：<b>布里恩茨湖 + Giessbach瀑布</b><span class="loc" data-dest="Giessbach Falls Brienz">导航</span>（瑞士最美瀑布之一，缆车+古酒店下午茶）</div></div>
+        <div class="tl-item"><div class="tl-time"></div><div class="tl-cont">备选：<b>施陶巴赫瀑布 Staubachfall</b>（Lauterbrunnen，欧洲最高自由落体瀑布之一）<span class="loc" data-dest="Staubbachfall Lauterbrunnen">导航</span></div></div>
+        <div class="tl-item"><div class="tl-time"></div><div class="tl-cont">备选：<b>少女峰 Jungfraujoch</b><span class="badge">需订座</span>（你待定，如去须提前订位，见待办）<span class="loc" data-dest="Jungfraujoch Top of Europe">导航</span></div></div>
+        <div class="tl-item"><div class="tl-time">晚</div><div class="tl-cont">回因特拉肯 Neuhaus</div></div>
+      </div>
+      <div class="day-note">少女峰 5/1-10/31 强制订座（CHF 10/人往返），上午班次易售罄。行前看天气窗口再决定。</div>
+    </div>
+  </div>
+
+  <div class="day" data-day="5">
+    <div class="day-head" onclick="this.parentElement.classList.toggle('open')">
+      <div class="day-title"><span class="d">D5</span>10月5日 周日<span class="city">因特拉肯 → 格林德瓦</span></div>
+      <div class="day-tools"><button class="tbtn day-nav" data-mode="driving">🚗 全天导航</button><span class="tbtn">展开</span></div>
+    </div>
+    <div class="day-body">
+      <div class="day-map"><svg viewBox="0 0 600 100" xmlns="http://www.w3.org/2000/svg"><path d="M40,50 Q200,30 300,45 T560,55" fill="none" stroke="var(--day3)" stroke-width="3" stroke-linecap="round" filter="url(#rough)"/><circle cx="40" cy="50" r="5" fill="var(--day2)"/><text x="10" y="70" font-size="10" fill="var(--text2)">因特拉肯</text><text x="250" y="30" font-size="10" fill="var(--text2)">30min</text><circle cx="560" cy="55" r="5" fill="var(--day3)"/><text x="490" y="48" font-size="10" fill="var(--text2)">格林德瓦</text></svg></div>
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-time">上午</div><div class="tl-cont">退房，自驾 因特拉肯 → 格林德瓦（21km / 30min）</div></div>
+        <div class="tl-item"><div class="tl-time">中午</div><div class="tl-cont">入住 <b>Boutique Hotel Glacier</b>（艾格峰景观房）<br><span class="loc" data-dest="Boutique Hotel Glacier Endweg 55 3818 Grindelwald">导航·酒店</span></div></div>
+        <div class="tl-item"><div class="tl-time">下午</div><div class="tl-cont">轻松：<b>First 缆车</b>上半山 + Cliff Walk 悬崖步道（20min）<span class="loc" data-dest="Grindelwald First cable car">导航</span> · 或镇内休整看艾格北壁</div></div>
+      </div>
+      <div class="day-note">明天 First 全天，今天别太累。First 自驾停 <b>Grindelwald Terminal</b>（缆车站附近无车位）<span class="loc" data-dest="Grindelwald Terminal parking">导航·停车场</span></div>
+    </div>
+  </div>
+
+  <div class="day" data-day="6">
+    <div class="day-head" onclick="this.parentElement.classList.toggle('open')">
+      <div class="day-title"><span class="d">D6</span>10月6日 周一<span class="city">First 山全天 ⛰️</span></div>
+      <div class="day-tools"><span class="tbtn">展开</span></div>
+    </div>
+    <div class="day-body">
+      <div class="day-map"><svg viewBox="0 0 600 130" xmlns="http://www.w3.org/2000/svg"><path d="M40,110 L120,30 L260,30 L340,100 L460,70 L560,110" fill="none" stroke="var(--day6)" stroke-width="3" stroke-linecap="round" filter="url(#rough)"/><circle cx="40" cy="110" r="5" fill="var(--day6)"/><text x="10" y="128" font-size="10" fill="var(--text2)">镇/Terminal</text><circle cx="120" cy="30" r="5" fill="var(--day6)"/><text x="100" y="20" font-size="10" fill="var(--text2)">First顶</text><circle cx="260" cy="30" r="4" fill="var(--gold)"/><text x="245" y="20" font-size="9" fill="var(--text2)">Bachalpsee</text><circle cx="340" cy="100" r="5" fill="var(--day6)"/><text x="330" y="120" font-size="9" fill="var(--text2)">Schreckfeld</text><circle cx="460" cy="70" r="5" fill="var(--day6)"/><text x="445" y="60" font-size="9" fill="var(--text2)">Bort(卡丁车终点)</text></svg></div>
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-time">08:30</div><div class="tl-cont">Grindelwald Terminal 缆车上 <b>First</b>（25min）</div></div>
+        <div class="tl-item"><div class="tl-time">09:00</div><div class="tl-cont"><b>First Cliff Walk</b> 悬崖步道（45m悬索桥，20min，含票内）</div></div>
+        <div class="tl-item"><div class="tl-time">09:30</div><div class="tl-cont"><b>Bachalpsee 往返徒步</b>（约2h，平缓美景，蓝宝石湖）</div></div>
+        <div class="tl-item"><div class="tl-time">12:00</div><div class="tl-cont">山顶 Bergrestaurant 午餐</div></div>
+        <div class="tl-item"><div class="tl-time">14:00</div><div class="tl-cont">缆车下到 Schreckfeld → <b>Mountain Cart 山地卡丁车</b> 骑到 Bort（下坡30min）<span class="badge">票内</span></div></div>
+        <div class="tl-item"><div class="tl-time">14:40</div><div class="tl-cont">可加 <b>First Flyer 飞椅</b>（First→Schreckfeld，84km/h，10min）<span class="badge">票内</span></div></div>
+        <div class="tl-item"><div class="tl-time">16:00</div><div class="tl-cont">缆车回格林德瓦</div></div>
+      </div>
+      <div class="day-note">🎫 建议 <b>Adventure Package</b>（CHF 60/人，含2活动+无限缆车），比单买划算。旺季可能售罄，建议提前订（见待办）。</div>
+    </div>
+  </div>
+
+  <div class="day" data-day="7">
+    <div class="day-head" onclick="this.parentElement.classList.toggle('open')">
+      <div class="day-title"><span class="d">D7</span>10月7日 周二<span class="city">格林德瓦 → 苏黎世市区</span></div>
+      <div class="day-tools"><button class="tbtn day-nav" data-mode="driving">🚗 还车导航</button><span class="tbtn">展开</span></div>
+    </div>
+    <div class="day-body">
+      <div class="day-map"><svg viewBox="0 0 600 100" xmlns="http://www.w3.org/2000/svg"><path d="M40,50 Q200,30 300,45 T560,55" fill="none" stroke="var(--day6)" stroke-width="3" stroke-dasharray="6 4" stroke-linecap="round" filter="url(#rough)"/><circle cx="40" cy="50" r="5" fill="var(--day3)"/><text x="10" y="70" font-size="10" fill="var(--text2)">格林德瓦</text><text x="240" y="30" font-size="10" fill="var(--text2)">自驾2h</text><circle cx="560" cy="55" r="5" fill="var(--accent)"/><text x="500" y="48" font-size="10" fill="var(--text2)">ZRH还车</text></svg></div>
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-time">09:00</div><div class="tl-cont">退房，自驾 格林德瓦 → 苏黎世机场 ZRH（147km / 2h）</div></div>
+        <div class="tl-item"><div class="tl-time">~14:00</div><div class="tl-cont"><b>Europcar 还车</b>（ZRH，窗口22:00止，提前还省心）<br><span class="loc" data-dest="Europcar Zurich Airport return">导航·还车点</span></div></div>
+        <div class="tl-item"><div class="tl-time">15:00</div><div class="tl-cont">火车/打车到 <b>Holiday Inn Express</b> 放行李（Rümlang站近）<br><span class="loc" data-dest="Holiday Inn Express Zurich Airport Hofwisenstrasse 30 Rumlang">导航·酒店</span></div></div>
+        <div class="tl-item"><div class="tl-time">16:00</div><div class="tl-cont">火车进苏黎世市区（Rümlang→主站约20min）<br>游 <b>老城 Niederdorf</b><span class="loc" data-dest="Niederdorf Zurich Old Town">导航</span> + <b>大教堂 Grossmünster</b>登塔<span class="loc" data-dest="Grossmunster Zurich">导航</span> + <b>林登霍夫 Lindenhof</b><span class="loc" data-dest="Lindenhof Zurich">导航</span></div></div>
+        <div class="tl-item"><div class="tl-time">可选</div><div class="tl-cont"><b>苏黎世美术馆 Kunsthaus</b>（周二开，蒙克《呐喊》+印象派，CHF 26）<span class="loc" data-dest="Kunsthaus Zurich">导航</span></div></div>
+        <div class="tl-item"><div class="tl-time">晚</div><div class="tl-cont">火车回 Holiday Inn Express</div></div>
+      </div>
+      <div class="day-note">周二博物馆都开门 ✓。Rümlang→ZRH机场火车约3分钟，明天赶飞机从容。</div>
+    </div>
+  </div>
+
+  <div class="day" data-day="8">
+    <div class="day-head" onclick="this.parentElement.classList.toggle('open')">
+      <div class="day-title"><span class="d">D8</span>10月8日 周三<span class="city">苏黎世 → 曼谷转机</span></div>
+      <div class="day-tools"><span class="tbtn">展开</span></div>
+    </div>
+    <div class="day-body">
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-time">上午</div><div class="tl-cont">Holiday Inn 退房，火车3min到 ZRH 机场</div></div>
+        <div class="tl-item"><div class="tl-time">~11:00</div><div class="tl-cont">抵机场值机（国际航班建议提前2.5h）</div></div>
+        <div class="tl-item"><div class="tl-time">13:30<br>+2</div><div class="tl-cont"><b>苏黎世 ZRH 起飞 TG971</b> → 曼谷</div></div>
+        <div class="tl-item"><div class="tl-time">05:30+1<br>+7</div><div class="tl-cont">次日抵曼谷 BKK 转机</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day" data-day="9">
+    <div class="day-head" onclick="this.parentElement.classList.toggle('open')">
+      <div class="day-title"><span class="d">D9</span>10月9日 周四<span class="city">曼谷 → 广州</span></div>
+      <div class="day-tools"><span class="tbtn">展开</span></div>
+    </div>
+    <div class="day-body">
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-time">10:30<br>+7</div><div class="tl-cont"><b>曼谷 BKK 起飞 TG668</b></div></div>
+        <div class="tl-item"><div class="tl-time">14:30<br>+8</div><div class="tl-cont"><b>抵达广州白云 CAN</b>，行程结束 🏁</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. 待办清单 -->
+<section class="todo">
+  <h2><span class="bar"></span>待办清单</h2>
+  <ul>
+    <li class="hot"><span class="pri">高</span><b>First 山 Adventure Package</b>（CHF 60/人，含2活动+无限缆车）— 旺季可能售罄，建议提前订</li>
+    <li><span class="pri">高</span><b>瑞士高速 vignette</b>（CHF 40，Europcar 到店加购，贴挡风玻璃）</li>
+    <li><b>少女峰</b>（待定）— 如去须提前订座 CHF 10/人往返（5/1-10/31强制），上午班次易售罄</li>
+    <li>图恩湖游船 / 哈德昆缆车 / 布里恩茨游船 — 现场买票即可</li>
+    <li>行前1周查瑞士天气窗口，定 D4 少女峰 / D6 First 主日</li>
+    <li>确认护照有效期（申根要求离境后仍有3个月）</li>
+    <li>中国驾照 + 瑞士认可翻译件/公证（Europcar 取车用）</li>
+    <li>下载 offline 地图（Google Maps 离线区 / Swiss Topo）</li>
+    <li>准备少量 CHF 现金（停车/小店用，多数可刷卡）</li>
+    <li>买瑞士旅行保险（含高海拔/户外运动）</li>
+  </ul>
+</section>
+
+<!-- 6. 实用贴士 -->
+<section>
+  <h2><span class="bar"></span>实用贴士</h2>
+  <div class="tips">
+    <div class="tip"><h4>⏰ 时区</h4><p>广州UTC+8 · 曼谷UTC+7 · 瑞士UTC+2（10月仍夏令时，10/25切换）。页面所有时间已标时区，倒计时按起飞地当地时。</p></div>
+    <div class="tip"><h4>🚗 自驾</h4><p>瑞士靠右行驶。高速需 vignette 年贴纸（CHF 40）。山区隧道多、坡陡弯急，格林德瓦-因特拉肯段注意。停车缴费机认 Visa/MC，备零钱。城市停车超时罚款高。</p></div>
+    <div class="tip"><h4>💳 支付</h4><p>瑞郎 CHF。信用卡普及（Visa/MC），部分小店/停车最低消费。备少量现金。汇率约 1 CHF ≈ 8.2 CNY。</p></div>
+    <div class="tip"><h4>🔌 插座</h4><p>瑞士 J 型（三圆孔），与欧标不同。带转换头，或直接用 USB-C 充电。</p></div>
+    <div class="tip"><h4>🌡️ 天气与高反</h4><p>10月山区白天10-15°C，早晚5°C以下，First 顶约0-5°C，带防风外套+抓绒。少女峰顶3454m，高反风险，避免剧烈活动。</p></div>
+    <div class="tip"><h4>📞 紧急</h4><p>通用急救 144 · 警察 117 · 道路救援 140。欧盟112也可拨。</p></div>
+    <div class="tip"><h4>📶 网络</h4><p>建议行前买 eSIM（Swisscom/Salt）或开通国际漫游。山区信号弱，务必下离线地图。</p></div>
+    <div class="tip"><h4>🚽 公厕</h4><p>火车站/商场免费，部分公厕投币 CHF 1-2。餐厅消费可借用。</p></div>
+  </div>
+</section>
+
+<footer>瑞士9日 · 2人 · 2026年10月1日—10月9日</footer>
+
+</div>
+
+<script>
+// ===== 事件锚点（UTC，按起飞/事件地时区显示）=====
+const EVENTS=[
+  {n:"广州起飞 TG679", t:"2026-10-01T13:05:00Z", tz:"Asia/Shanghai", tzl:"UTC+8 广州"},
+  {n:"抵达苏黎世 ZRH", t:"2026-10-02T05:50:00Z", tz:"Europe/Zurich", tzl:"UTC+2 苏黎世"},
+  {n:"Europcar 取车", t:"2026-10-02T07:30:00Z", tz:"Europe/Zurich", tzl:"UTC+2 苏黎世"},
+  {n:"入住 Hotel Seeburg 卢塞恩", t:"2026-10-02T14:00:00Z", tz:"Europe/Zurich", tzl:"UTC+2 卢塞恩"},
+  {n:"入住 Neuhaus 因特拉肯", t:"2026-10-03T13:00:00Z", tz:"Europe/Zurich", tzl:"UTC+2 因特拉肯"},
+  {n:"入住 Boutique Hotel Glacier 格林德瓦", t:"2026-10-05T13:00:00Z", tz:"Europe/Zurich", tzl:"UTC+2 格林德瓦"},
+  {n:"First 山全天", t:"2026-10-06T06:30:00Z", tz:"Europe/Zurich", tzl:"UTC+2 格林德瓦"},
+  {n:"Europcar 还车 + 苏黎世市区", t:"2026-10-07T12:00:00Z", tz:"Europe/Zurich", tzl:"UTC+2 苏黎世"},
+  {n:"苏黎世起飞 TG971", t:"2026-10-08T11:30:00Z", tz:"Europe/Zurich", tzl:"UTC+2 苏黎世"},
+  {n:"抵达广州 CAN", t:"2026-10-09T06:30:00Z", tz:"Asia/Shanghai", tzl:"UTC+8 广州"}
+];
+const DONE_MSG="行程进行中 / 已结束 🏁";
+
+function fmtTz(date, tz){
+  try{ return new Intl.DateTimeFormat('zh-CN',{timeZone:tz, month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).format(date).replace(/\//g,'/') ; }catch(e){ return date.toLocaleString(); }
+}
+function pad(n){return String(n).padStart(2,'0')}
+function getNext(){
+  const now=Date.now();
+  for(const e of EVENTS){ if(new Date(e.t).getTime()>now) return e; }
+  return null;
+}
+function tick(){
+  const ev=getNext();
+  if(!ev){
+    document.getElementById('next-name').textContent=DONE_MSG;
+    document.getElementById('next-when').textContent='';
+    ['cd-d','cd-h','cd-m','cd-s'].forEach(id=>document.getElementById(id).textContent='00');
+    return;
+  }
+  const diff=new Date(ev.t).getTime()-Date.now();
+  document.getElementById('next-name').textContent=ev.n;
+  document.getElementById('next-when').textContent=fmtTz(new Date(ev.t), ev.tz)+' '+ev.tzl;
+  if(diff<=0){ document.getElementById('cd-d').textContent='00';document.getElementById('cd-h').textContent='00';document.getElementById('cd-m').textContent='00';document.getElementById('cd-s').textContent='00'; return; }
+  const d=Math.floor(diff/86400000);
+  const h=Math.floor(diff/3600000)%24;
+  const m=Math.floor(diff/60000)%60;
+  const s=Math.floor(diff/1000)%60;
+  document.getElementById('cd-d').textContent=pad(d);
+  document.getElementById('cd-h').textContent=pad(h);
+  document.getElementById('cd-m').textContent=pad(m);
+  document.getElementById('cd-s').textContent=pad(s);
+}
+tick(); setInterval(tick,1000);
+
+// ===== 昼夜换色（跟浏览器本地时间）=====
+function theme(){
+  const h=new Date().getHours();
+  document.documentElement.setAttribute('data-theme', (h<7||h>=19)?'dark':'light');
+}
+theme(); setInterval(theme,60000);
+
+// ===== 地点点击 → Google Maps 导航 =====
+function gnav(dest, mode){
+  const u=new URL('https://www.google.com/maps/dir/');
+  u.searchParams.set('api','1');
+  u.searchParams.set('destination', dest);
+  u.searchParams.set('travelmode', mode||'driving');
+  window.open(u.toString(),'_blank');
+}
+document.querySelectorAll('.loc[data-dest]').forEach(el=>{
+  el.addEventListener('click', e=>{ e.stopPropagation(); gnav(el.dataset.dest, el.dataset.mode); });
+});
+
+// ===== 全天多点导航 =====
+document.querySelectorAll('.day-nav').forEach(btn=>{
+  btn.addEventListener('click', e=>{
+    e.stopPropagation();
+    const day=btn.closest('.day');
+    const pts=[...day.querySelectorAll('[data-dest]')].map(x=>x.dataset.dest);
+    if(pts.length<2){ alert('当日地点不足'); return; }
+    const origin=pts[0], dest=pts[pts.length-1];
+    const wps=pts.slice(1,-1).slice(0,9).join('|');
+    const u=new URL('https://www.google.com/maps/dir/');
+    u.searchParams.set('api','1');
+    u.searchParams.set('origin',origin);
+    u.searchParams.set('destination',dest);
+    u.searchParams.set('travelmode', btn.dataset.mode||'driving');
+    if(wps) u.searchParams.set('waypoints', wps);
+    window.open(u.toString(),'_blank');
+  });
+});
+</script>
+</body>
+</html>
