@@ -3,35 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#d52b1e">
+<meta name="theme-color" content="#5b9279">
 <title>瑞士9日 · 旅行手册</title>
 <style>
 :root{
-  --bg:#f3f0e9; --bg2:#ece7dc; --card:#ffffff; --text:#2b2b2b; --text2:#6b6b6b;
-  --line:#e0dac9; --accent:#c8102e; --accent2:#2f6b3e; --gold:#b8860b;
-  --shadow:0 6px 24px rgba(60,40,20,.10); --radius:18px;
-  --day1:#c8102e; --day2:#2f6b3e; --day3:#1f6fb2; --day4:#b8860b; --day5:#8e44ad; --day6:#e67e22; --day7:#16a085;
+  --bg:#f5f7f4; --bg2:#eaf0ea; --card:#ffffff; --text:#38473d; --text2:#8fa094;
+  --line:#e0e8e0; --accent:#5b9279; --accent2:#7fab8e; --gold:#c4a85a;
+  --shadow:0 4px 18px rgba(60,80,70,.07); --radius:20px;
+  --day1:#d97777; --day2:#6a9f8a; --day3:#5a8fb5; --day4:#c4a85a; --day5:#9b7fb0; --day6:#d99060; --day7:#5ba899;
+  --alert:#c8102e; --alert2:#a00d24;
 }
 [data-theme="dark"]{
-  --bg:#15171c; --bg2:#1c1f26; --card:#21252d; --text:#e9e6df; --text2:#9aa0aa;
-  --line:#2d323c; --accent:#ff5470; --accent2:#5cd6a0; --gold:#e0b04a;
-  --shadow:0 8px 28px rgba(0,0,0,.35);
+  --bg:#14181a; --bg2:#1c2226; --card:#222826; --text:#e7ece6; --text2:#92a096;
+  --line:#2c3530; --accent:#6fbf9e; --accent2:#5fa884; --gold:#d4b45e;
+  --shadow:0 8px 28px rgba(0,0,0,.30);
+  --alert:#e8445a; --alert2:#b01a2e;
 }
 *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth}
 body{margin:0; font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
-  background:var(--bg); color:var(--text); line-height:1.65; transition:background .4s,color .4s;
-  -webkit-text-size-adjust:100%}
-.wrap{max-width:760px; margin:0 auto; padding:0 16px 60px}
-section{margin-top:28px}
-h2{font-size:1.32rem; margin:0 0 14px; display:flex; align-items:center; gap:8px}
-h2 .bar{width:5px; height:22px; background:var(--accent); border-radius:3px}
-.sub{color:var(--text2); font-size:.82rem; margin-top:4px}
+  background:var(--bg); color:var(--text); line-height:1.72; transition:background .4s,color .4s;
+  -webkit-text-size-adjust:100%; letter-spacing:.2px}
+.wrap{max-width:720px; margin:0 auto; padding:0 18px 64px}
+section{margin-top:34px}
+h2{font-size:1.28rem; margin:0 0 16px; display:flex; align-items:center; gap:9px; font-weight:700}
+h2 .bar{width:4px; height:20px; background:var(--accent); border-radius:3px}
+.sub{color:var(--text2); font-size:.8rem; margin-top:5px}
 
-/* 倒计时卡片 */
-#now-card{background:linear-gradient(135deg,var(--accent),#a00d24); color:#fff; border-radius:var(--radius);
+/* 倒计时卡片 — 保持红色提醒色（不随主题绿） */
+#now-card{background:linear-gradient(135deg,var(--alert),var(--alert2)); color:#fff; border-radius:var(--radius);
   padding:26px 22px; box-shadow:var(--shadow); position:relative; overflow:hidden}
-[data-theme="dark"] #now-card{background:linear-gradient(135deg,#3a2030,#1a1018)}
+[data-theme="dark"] #now-card{background:linear-gradient(135deg,var(--alert),var(--alert2))}
 #now-card::before{content:""; position:absolute; right:-40px; top:-40px; width:160px; height:160px;
   background:rgba(255,255,255,.08); border-radius:50%}
 .now-label{font-size:.82rem; opacity:.92; letter-spacing:.5px}
@@ -52,59 +54,59 @@ h2 .bar{width:5px; height:22px; background:var(--accent); border-radius:3px}
 
 /* 订单卡 */
 .orders{display:grid; gap:12px}
-.order{background:var(--card); border-radius:14px; padding:16px; box-shadow:var(--shadow); border-left:4px solid var(--accent2)}
-.order h3{margin:0 0 10px; font-size:1.02rem}
-.order .tag{display:inline-block; font-size:.7rem; background:var(--bg2); color:var(--text2); padding:2px 8px; border-radius:20px; margin-right:6px}
-.order .row{display:flex; justify-content:space-between; gap:10px; padding:4px 0; font-size:.84rem; border-bottom:1px dashed var(--line)}
+.order{background:var(--card); border-radius:var(--radius); padding:17px 18px; box-shadow:var(--shadow); border-left:4px solid var(--accent2)}
+.order h3{margin:0 0 10px; font-size:1rem}
+.order .tag{display:inline-block; font-size:.68rem; background:var(--bg2); color:var(--text2); padding:2px 9px; border-radius:20px; margin-right:6px}
+.order .row{display:flex; justify-content:space-between; gap:10px; padding:5px 0; font-size:.82rem; border-bottom:1px dashed var(--line)}
 .order .row:last-child{border-bottom:0}
 .order .row .k{color:var(--text2); flex-shrink:0}
 .order .row .v{text-align:right; word-break:break-word}
 
 /* 逐日行程 */
-.day{background:var(--card); border-radius:var(--radius); margin-bottom:14px; overflow:hidden; box-shadow:var(--shadow)}
-.day-head{display:flex; align-items:center; justify-content:space-between; padding:14px 16px; cursor:pointer; gap:10px}
+.day{background:var(--card); border-radius:var(--radius); margin-bottom:16px; overflow:hidden; box-shadow:var(--shadow)}
+.day-head{display:flex; align-items:center; justify-content:space-between; padding:16px 18px; cursor:pointer; gap:10px}
 .day-head:active{background:var(--bg2)}
-.day-title{font-size:1rem; font-weight:700}
+.day-title{font-size:1.02rem; font-weight:700}
 .day-title .d{color:var(--accent); margin-right:6px}
-.day-title .city{color:var(--text2); font-weight:400; font-size:.84rem; margin-left:4px}
+.day-title .city{color:var(--text2); font-weight:400; font-size:.82rem; margin-left:5px}
 .day-tools{display:flex; gap:6px}
-.tbtn{font-size:.72rem; border:1px solid var(--line); background:var(--bg2); color:var(--text); padding:5px 9px; border-radius:8px; cursor:pointer; white-space:nowrap}
+.tbtn{font-size:.71rem; border:1px solid var(--line); background:var(--bg2); color:var(--text); padding:5px 10px; border-radius:9px; cursor:pointer; white-space:nowrap}
 .tbtn:active{background:var(--line)}
-.day-body{display:none; padding:0 16px 16px}
+.day-body{display:none; padding:2px 18px 18px}
 .day.open .day-body{display:block}
-.day-map{margin:10px 0; border-radius:10px; overflow:hidden; background:var(--bg2)}
+.day-map{margin:12px 0; border-radius:12px; overflow:hidden; background:var(--bg2)}
 .day-map svg{width:100%; height:auto; display:block}
 .timeline{position:relative; padding-left:0}
-.tl-item{display:flex; gap:12px; padding:8px 0; border-bottom:1px dashed var(--line)}
+.tl-item{display:flex; gap:13px; padding:9px 0; border-bottom:1px dashed var(--line)}
 .tl-item:last-child{border-bottom:0}
-.tl-time{flex-shrink:0; width:62px; font-variant-numeric:tabular-nums; font-size:.82rem; color:var(--accent2); font-weight:600; padding-top:2px}
+.tl-time{flex-shrink:0; width:62px; font-variant-numeric:tabular-nums; font-size:.8rem; color:var(--accent2); font-weight:600; padding-top:2px}
 [data-theme="dark"] .tl-time{color:var(--accent2)}
-.tl-cont{flex:1; font-size:.88rem}
+.tl-cont{flex:1; font-size:.87rem; line-height:1.7}
 .tl-cont b{font-weight:600}
-.tl-cont .badge{display:inline-block; font-size:.68rem; background:#c8102e; color:#fff; padding:1px 7px; border-radius:8px; margin-left:4px; vertical-align:middle}
+.tl-cont .badge{display:inline-block; font-size:.66rem; background:var(--alert); color:#fff; padding:1px 7px; border-radius:8px; margin-left:4px; vertical-align:middle}
 .loc{color:var(--accent); cursor:pointer; border-bottom:1px dotted var(--accent)}
 .loc:active{opacity:.6}
-.day-note{margin-top:8px; font-size:.78rem; color:var(--text2); background:var(--bg2); padding:8px 10px; border-radius:8px}
+.day-note{margin-top:10px; font-size:.76rem; color:var(--text2); background:var(--bg2); padding:9px 12px; border-radius:10px; line-height:1.65}
 
 /* 待办 */
 .todo ul{list-style:none; padding:0; margin:0}
-.todo li{padding:9px 0 9px 30px; position:relative; border-bottom:1px dashed var(--line); font-size:.9rem}
+.todo li{padding:10px 0 10px 30px; position:relative; border-bottom:1px dashed var(--line); font-size:.88rem}
 .todo li:last-child{border-bottom:0}
-.todo li::before{content:""; position:absolute; left:4px; top:13px; width:14px; height:14px; border:2px solid var(--accent); border-radius:4px}
+.todo li::before{content:""; position:absolute; left:4px; top:14px; width:14px; height:14px; border:2px solid var(--accent); border-radius:5px}
 .todo li.hot::before{background:var(--accent); opacity:.3}
-.todo .pri{font-size:.7rem; background:var(--accent); color:#fff; padding:1px 6px; border-radius:6px; margin-right:6px}
+.todo .pri{font-size:.68rem; background:var(--alert); color:#fff; padding:1px 7px; border-radius:6px; margin-right:6px}
 
 /* 贴士 */
-.tips{display:grid; gap:10px}
-.tip{background:var(--card); border-radius:12px; padding:14px; box-shadow:var(--shadow)}
-.tip h4{margin:0 0 6px; font-size:.92rem; color:var(--accent2)}
-.tip p{margin:0; font-size:.82rem; color:var(--text2)}
+.tips{display:grid; gap:11px}
+.tip{background:var(--card); border-radius:14px; padding:15px 16px; box-shadow:var(--shadow)}
+.tip h4{margin:0 0 7px; font-size:.9rem; color:var(--accent2)}
+.tip p{margin:0; font-size:.8rem; color:var(--text2); line-height:1.7}
 
 /* 天气 */
 .weather{background:linear-gradient(135deg,var(--card),var(--bg2)); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
 .w-top{display:flex; justify-content:space-between; align-items:center; margin-bottom:6px}
 .w-loc{font-size:.9rem; font-weight:600; display:flex; align-items:center; gap:5px}
-.w-loc-btn{font-size:.72rem; border:1px solid var(--line); background:var(--bg2); color:var(--text); padding:5px 10px; border-radius:8px; cursor:pointer}
+.w-loc-btn{font-size:.71rem; border:1px solid var(--line); background:var(--bg2); color:var(--text); padding:5px 11px; border-radius:9px; cursor:pointer}
 .w-loc-btn:active{background:var(--line)}
 .w-main{display:flex; align-items:center; gap:14px; margin:6px 0}
 .w-icon{font-size:2.6rem; line-height:1}
@@ -123,7 +125,7 @@ h2 .bar{width:5px; height:22px; background:var(--accent); border-radius:3px}
 .w-hint{font-size:.7rem; color:var(--text2); margin-top:8px; line-height:1.5}
 
 /* 每日行程天气卡 */
-.day-wx{font-size:.76rem; background:var(--bg2); border-radius:8px; padding:8px 11px; margin:8px 0 4px; display:flex; flex-wrap:wrap; gap:4px 11px; align-items:center; border-left:3px solid var(--accent); line-height:1.45}
+.day-wx{font-size:.76rem; background:var(--bg2); border-radius:11px; padding:9px 12px; margin:8px 0 4px; display:flex; flex-wrap:wrap; gap:4px 11px; align-items:center; border-left:3px solid var(--accent); line-height:1.5}
 .day-wx .dw-tag{font-weight:600; color:var(--accent2)}
 .day-wx .dw-icon{font-size:1.35rem; line-height:1}
 .day-wx .dw-temp{font-weight:800; font-variant-numeric:tabular-nums; color:var(--text)}
@@ -134,15 +136,21 @@ h2 .bar{width:5px; height:22px; background:var(--accent); border-radius:3px}
 .dw-load{color:var(--text2); font-size:.76rem}
 
 /* 每日行程·依天气调整方案 */
-.day-planb{font-size:.76rem; background:var(--bg2); border-radius:8px; padding:9px 11px; margin:0 0 8px; border-left:3px solid var(--gold); line-height:1.55}
+.day-planb{font-size:.76rem; background:var(--bg2); border-radius:11px; padding:10px 12px; margin:0 0 8px; border-left:3px solid var(--gold); line-height:1.55}
 .pb-head{font-weight:600; color:var(--accent2); margin-bottom:6px; font-size:.78rem}
-.pb-opt{padding:4px 8px; color:var(--text2); opacity:.5; border-radius:6px; margin:2px 0}
+.pb-opt{padding:4px 8px; color:var(--text2); opacity:.45; border-radius:6px; margin:2px 0; transition:opacity .3s, background .3s}
 .pb-opt b{color:var(--text2)}
 .pb-opt.active{opacity:1; color:var(--text); background:var(--card)}
 .pb-opt.active b{color:var(--text)}
+.pb-opt.marginal{opacity:1; color:var(--text); background:rgba(255,152,0,.10)}
+.pb-opt.marginal b{color:var(--text)}
 .pb-sun.active{box-shadow:inset 3px 0 0 #4caf50}
 .pb-rain.active{box-shadow:inset 3px 0 0 var(--accent)}
+.pb-sun.marginal{box-shadow:inset 3px 0 0 #ff9800}
+.pb-rain.marginal{box-shadow:inset 3px 0 0 #ff9800}
 .pb-status{font-size:.72rem; color:var(--text2); margin-top:5px; padding-top:5px; border-top:1px dashed var(--line)}
+.pb-status.warn{color:var(--accent2); font-weight:600}
+.pb-status.ok{color:#4caf50; font-weight:600}
 
 footer{text-align:center; color:var(--text2); font-size:.72rem; margin-top:40px; padding-top:18px; border-top:1px solid var(--line)}
 </style>
@@ -681,15 +689,20 @@ function dwClimateCode(hi,lo,rain){
 }
 // 雨/雪 WMO 码集合（用于判断是否高亮"雨天方案"）
 const DW_RAIN=new Set([51,53,55,56,57,61,63,65,66,67,71,73,75,77,80,81,82,85,86,95,96,99]);
-// 更新当日"依天气调整方案"高亮：mode='sun'|'rain'|'unknown'
+// 更新当日"依天气调整方案"高亮：mode='sun'|'rain'|'marginal'|'unknown'
+// sun/rain → 推荐项高亮(绿/蓝)、非推荐项置灰；marginal → 两套琥珀(备两套)；unknown → 全置灰
 function updatePlanB(slot, mode, status){
   const pb=slot.parentElement.querySelector('.day-planb');
   if(!pb) return;
-  pb.querySelectorAll('.pb-opt').forEach(o=>o.classList.remove('active'));
-  if(mode==='sun') pb.querySelector('.pb-sun')?.classList.add('active');
-  else if(mode==='rain') pb.querySelector('.pb-rain')?.classList.add('active');
+  pb.querySelectorAll('.pb-opt').forEach(o=>{o.classList.remove('active','marginal');});
+  const sun=pb.querySelector('.pb-sun'), rain=pb.querySelector('.pb-rain');
+  if(mode==='sun'){sun?.classList.add('active');}
+  else if(mode==='rain'){rain?.classList.add('active');}
+  else if(mode==='marginal'){sun?.classList.add('marginal'); rain?.classList.add('marginal');}
+  // unknown: 全置灰（不加 active/marginal）
   let st=pb.querySelector('.pb-status');
   if(!st){st=document.createElement('div'); st.className='pb-status'; pb.appendChild(st);}
+  st.className='pb-status'+(mode==='marginal'?' warn':(mode==='rain'?' warn':(mode==='sun'?' ok':'')));
   st.textContent=status;
 }
 async function loadDayWeather(){
@@ -735,8 +748,20 @@ async function loadDayWeather(){
         (uv!=null?'<span>☀️UV '+uv+'</span>':'')+
         '<div class="dw-far">距出行 '+away+' 天 · 精确预报（Open-Meteo）'+(alt&&alt>=1500?' · 🏔️'+alt+'m':'')+'</div>'+
         '<div class="dw-cloth">'+cA+'</div>';
-      const isRain=(pp!=null&&pp>=40)||DW_RAIN.has(c);
-      updatePlanB(s, isRain?'rain':'sun', isRain?('☔ 今日预报有雨·降水概率 '+pp+'%·已高亮雨天方案，建议改走'):'☀️ 今日预报晴/多云·当前计划适用 ✓');
+      // 三档判定：晴(推荐当前计划)/雨(推荐雨天方案)/多变(两套都备)
+      // 高山站(alt≥1500)更保守：30%即判雨、15-30%判多变；谷地站：40%判雨、20-40%判多变
+      const isRainCode=DW_RAIN.has(c);
+      const hi = (alt&&alt>=1500)? 30:40;   // 高山雨阈值
+      const lo = (alt&&alt>=1500)? 15:20;   // 高山多变阈值
+      let mode, msg;
+      if(isRainCode || (pp!=null&&pp>=hi)){
+        mode='rain'; msg='☔ 今日预报有雨'+(pp!=null?('·降水概率 '+pp+'%'):'')+'·已高亮雨天方案，建议改走';
+      }else if((pp!=null&&pp>=lo) || c===2||c===3){  // 多云/阴天也算多变
+        mode='marginal'; msg='🌗 天气多变·降水概率 '+(pp!=null?pp:'?')+'%·两套方案都备，临出门再定';
+      }else{
+        mode='sun'; msg='☀️ 今日预报晴/少云·降水概率 '+(pp!=null?pp:'?')+'%·当前计划适用 ✓';
+      }
+      updatePlanB(s, mode, msg);
     }catch(e){renderClimate('10月气候均值（精确预报暂不可用）');updatePlanB(s,'unknown','📊 精确预报暂不可用·雨天方案供参考');}
     await new Promise(r=>setTimeout(r,250));
   }
