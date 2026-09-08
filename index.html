@@ -133,6 +133,17 @@ h2 .bar{width:5px; height:22px; background:var(--accent); border-radius:3px}
 .dw-far{flex-basis:100%; color:var(--text2); font-size:.7rem; margin-top:1px}
 .dw-load{color:var(--text2); font-size:.76rem}
 
+/* 每日行程·依天气调整方案 */
+.day-planb{font-size:.76rem; background:var(--bg2); border-radius:8px; padding:9px 11px; margin:0 0 8px; border-left:3px solid var(--gold); line-height:1.55}
+.pb-head{font-weight:600; color:var(--accent2); margin-bottom:6px; font-size:.78rem}
+.pb-opt{padding:4px 8px; color:var(--text2); opacity:.5; border-radius:6px; margin:2px 0}
+.pb-opt b{color:var(--text2)}
+.pb-opt.active{opacity:1; color:var(--text); background:var(--card)}
+.pb-opt.active b{color:var(--text)}
+.pb-sun.active{box-shadow:inset 3px 0 0 #4caf50}
+.pb-rain.active{box-shadow:inset 3px 0 0 var(--accent)}
+.pb-status{font-size:.72rem; color:var(--text2); margin-top:5px; padding-top:5px; border-top:1px dashed var(--line)}
+
 footer{text-align:center; color:var(--text2); font-size:.72rem; margin-top:40px; padding-top:18px; border-top:1px solid var(--line)}
 </style>
 </head>
@@ -359,6 +370,11 @@ footer{text-align:center; color:var(--text2); font-size:.72rem; margin-top:40px;
     </div>
     <div class="day-body">
       <div class="day-wx" data-date="2026-10-04" data-lat="46.6863" data-lon="7.8632" data-name="因特拉肯" data-hi="14" data-lo="6" data-rain="9"><span class="dw-tag">🌦️ 当日天气</span> <span class="dw-load">载入中…</span></div>
+      <div class="day-planb" data-pb="4">
+        <div class="pb-head">📋 依天气调整方案 · D4 是机动日（最灵活，雨天优先改这里）</div>
+        <div class="pb-opt pb-sun"><b>☀️ 晴/多云</b> · 当前计划适用：Trümmelbach瀑布 + 施陶巴赫瀑布 + 布里恩茨湖/Giessbach瀑布，缆车观景类(Schynige Platte/Harder Kulm)可选</div>
+        <div class="pb-opt pb-rain"><b>☔ 雨/雾</b> · 改走雨天方案：Trümmelbach<b>地下</b>瀑布（入山隧道，雨天水更大更壮观，不受影响）+ Aare Gorge 阿勒峡（峡谷木栈道，雨天可走，带防水）+ St. Beatus 溶洞（全室内）+ 因特拉肯市区/酒店休整。⚠️ Schynige Platte/Harder Kulm 缆车雨天无视野，别上</div>
+      </div>
       <div class="timeline">
         <div class="tl-item"><div class="tl-time">上午</div><div class="tl-cont">自驾经 Lauterbrunnen 谷：<b>Trümmelbach 地下冰川瀑布</b><span class="loc" data-dest="Trummelbachfalle Lauterbrunnen">导航</span>（欧洲唯一入山地下瀑布，2万升/秒冰川融水，隧道电梯入山，现场买票，4-11月开放，4岁以下禁入）</div></div>
         <div class="tl-item"><div class="tl-time"></div><div class="tl-cont">顺路 <b>施陶巴赫瀑布 Staubachfall</b>（欧洲最高自由落体瀑布之一）<span class="loc" data-dest="Staubbachfall Lauterbrunnen">导航</span></div></div>
@@ -377,6 +393,11 @@ footer{text-align:center; color:var(--text2); font-size:.72rem; margin-top:40px;
     </div>
     <div class="day-body">
       <div class="day-wx" data-date="2026-10-05" data-lat="46.6089" data-lon="7.9419" data-name="Männlichen 2343m" data-alt="2343" data-hi="3" data-lo="-4" data-rain="12"><span class="dw-tag">🌦️ 当日天气</span> <span class="dw-load">载入中…</span></div>
+      <div class="day-planb" data-pb="5">
+        <div class="pb-head">📋 依天气调整方案 · 若本日雨而 D4 晴，可与 D4 对调</div>
+        <div class="pb-opt pb-sun"><b>☀️ 晴/多云</b> · 当前计划适用：Männlichen 缆车 2343m + Royal Walk 皇冠观景台，360° 三峰视野</div>
+        <div class="pb-opt pb-rain"><b>☔ 雨/雾/低云</b> · 山顶无视野，缆车别上（票看退改条款）→ 改谷底：① 格林德瓦镇闲逛 + First Cliff Walk（短·半遮）② 提前做 D4 的瀑布/溶洞日 ③ 布里恩茨湖游船（船上避雨观湖）④ 因特拉肯赌场 Kursaal</div>
+      </div>
       <div class="day-map"><svg viewBox="0 0 600 100" xmlns="http://www.w3.org/2000/svg"><path d="M40,50 Q200,30 300,45 T560,55" fill="none" stroke="var(--day3)" stroke-width="3" stroke-linecap="round" filter="url(#rough)"/><circle cx="40" cy="50" r="5" fill="var(--day2)"/><text x="10" y="70" font-size="10" fill="var(--text2)">因特拉肯</text><text x="250" y="30" font-size="10" fill="var(--text2)">30min</text><circle cx="560" cy="55" r="5" fill="var(--day3)"/><text x="490" y="48" font-size="10" fill="var(--text2)">格林德瓦</text></svg></div>
       <div class="timeline">
         <div class="tl-item"><div class="tl-time">上午</div><div class="tl-cont">退房，自驾 因特拉肯 → 格林德瓦（21km / 30min）</div></div>
@@ -395,6 +416,11 @@ footer{text-align:center; color:var(--text2); font-size:.72rem; margin-top:40px;
     </div>
     <div class="day-body">
       <div class="day-wx" data-date="2026-10-06" data-lat="46.6624" data-lon="8.0103" data-name="First山顶 2168m" data-alt="2168" data-hi="4" data-lo="-3" data-rain="12"><span class="dw-tag">🌦️ 当日天气</span> <span class="dw-load">载入中…</span></div>
+      <div class="day-planb" data-pb="6">
+        <div class="pb-head">📋 依天气调整方案 · D6 是高代价全天山日，雨天务必放弃 · 若本日雨而 D4/D5 晴可对调</div>
+        <div class="pb-opt pb-sun"><b>☀️ 晴/多云</b> · 当前计划适用：缆车上 First + 山地卡丁车 + Bachalpsee 徒步 + Bort 下坡徒步</div>
+        <div class="pb-opt pb-rain"><b>☔ 雨/雾/雪</b> · 山顶无视野 + 卡丁车雨天危险 + 徒步湿滑 → 务必放弃，改谷底日：① First Cliff Walk（短·半遮）② 机动调到瀑布/溶洞 ③ 提前开车去 Bern 老城（6km 带顶拱廊街·雨天不愁）④ 提前回苏黎世。⚠️ Adventure Package 注意退改政策</div>
+      </div>
       <div class="day-map"><svg viewBox="0 0 600 130" xmlns="http://www.w3.org/2000/svg"><path d="M40,110 L120,30 L260,30 L340,100 L460,70 L560,110" fill="none" stroke="var(--day6)" stroke-width="3" stroke-linecap="round" filter="url(#rough)"/><circle cx="40" cy="110" r="5" fill="var(--day6)"/><text x="10" y="128" font-size="10" fill="var(--text2)">镇/Terminal</text><circle cx="120" cy="30" r="5" fill="var(--day6)"/><text x="100" y="20" font-size="10" fill="var(--text2)">First顶</text><circle cx="260" cy="30" r="4" fill="var(--gold)"/><text x="245" y="20" font-size="9" fill="var(--text2)">Bachalpsee</text><circle cx="340" cy="100" r="5" fill="var(--day6)"/><text x="330" y="120" font-size="9" fill="var(--text2)">Schreckfeld</text><circle cx="460" cy="70" r="5" fill="var(--day6)"/><text x="445" y="60" font-size="9" fill="var(--text2)">Bort(卡丁车终点)</text></svg></div>
       <div class="timeline">
         <div class="tl-item"><div class="tl-time">08:30</div><div class="tl-cont">Grindelwald Terminal 缆车上 <b>First</b>（25min）</div></div>
@@ -653,6 +679,19 @@ function dwClimateCode(hi,lo,rain){
   if(rain>=9) return 61;           // 小雨基线
   return 2;                        // 多云
 }
+// 雨/雪 WMO 码集合（用于判断是否高亮"雨天方案"）
+const DW_RAIN=new Set([51,53,55,56,57,61,63,65,66,67,71,73,75,77,80,81,82,85,86,95,96,99]);
+// 更新当日"依天气调整方案"高亮：mode='sun'|'rain'|'unknown'
+function updatePlanB(slot, mode, status){
+  const pb=slot.parentElement.querySelector('.day-planb');
+  if(!pb) return;
+  pb.querySelectorAll('.pb-opt').forEach(o=>o.classList.remove('active'));
+  if(mode==='sun') pb.querySelector('.pb-sun')?.classList.add('active');
+  else if(mode==='rain') pb.querySelector('.pb-rain')?.classList.add('active');
+  let st=pb.querySelector('.pb-status');
+  if(!st){st=document.createElement('div'); st.className='pb-status'; pb.appendChild(st);}
+  st.textContent=status;
+}
 async function loadDayWeather(){
   const slots=document.querySelectorAll('.day-wx');
   for(const s of slots){
@@ -673,7 +712,7 @@ async function loadDayWeather(){
         '<div class="dw-far">距出行 '+away+' 天 · '+note+(alt&&alt>=1500?' · 🏔️'+alt+'m':'')+'</div>'+
         '<div class="dw-cloth">'+cA+'</div>';
     };
-    if(away>16){renderClimate('10月气候均值，临近16天自动切换精确预报');continue;}
+    if(away>16){renderClimate('10月气候均值，临近16天自动切换精确预报');updatePlanB(s,'unknown','📊 暂为10月气候均值·雨天方案供参考·临近出行据精确预报自动高亮');continue;}
     // 精确预报
     s.innerHTML='<span class="dw-tag">🌦️ '+name+' · 当日天气</span> <span class="dw-load">拉取精确预报…</span>';
     try{
@@ -696,7 +735,9 @@ async function loadDayWeather(){
         (uv!=null?'<span>☀️UV '+uv+'</span>':'')+
         '<div class="dw-far">距出行 '+away+' 天 · 精确预报（Open-Meteo）'+(alt&&alt>=1500?' · 🏔️'+alt+'m':'')+'</div>'+
         '<div class="dw-cloth">'+cA+'</div>';
-    }catch(e){renderClimate('10月气候均值（精确预报暂不可用）');}
+      const isRain=(pp!=null&&pp>=40)||DW_RAIN.has(c);
+      updatePlanB(s, isRain?'rain':'sun', isRain?('☔ 今日预报有雨·降水概率 '+pp+'%·已高亮雨天方案，建议改走'):'☀️ 今日预报晴/多云·当前计划适用 ✓');
+    }catch(e){renderClimate('10月气候均值（精确预报暂不可用）');updatePlanB(s,'unknown','📊 精确预报暂不可用·雨天方案供参考');}
     await new Promise(r=>setTimeout(r,250));
   }
 }
