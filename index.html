@@ -333,21 +333,22 @@ footer{text-align:center; color:var(--text2); font-size:.72rem; margin-top:40px;
   <div class="day" data-day="7">
     <div class="day-head" onclick="this.parentElement.classList.toggle('open')">
       <div class="day-title"><span class="d">D7</span>10月7日 周二<span class="city">格林德瓦 → Bern → 苏黎世</span></div>
-      <div class="day-tools"><button class="tbtn day-nav" data-mode="driving">🚗 还车导航</button><span class="tbtn">展开</span></div>
+      <div class="day-tools"><button class="tbtn day-nav" data-mode="driving">🚗 全天导航</button><span class="tbtn">展开</span></div>
     </div>
     <div class="day-body">
-      <div class="day-map"><svg viewBox="0 0 600 100" xmlns="http://www.w3.org/2000/svg"><path d="M40,50 Q120,62 220,55 Q400,28 560,55" fill="none" stroke="var(--day6)" stroke-width="3" stroke-dasharray="6 4" stroke-linecap="round" filter="url(#rough)"/><circle cx="40" cy="50" r="5" fill="var(--day3)"/><text x="10" y="70" font-size="10" fill="var(--text2)">格林德瓦</text><circle cx="220" cy="55" r="5" fill="var(--gold)"/><text x="200" y="48" font-size="9" fill="var(--text2)">Bern</text><text x="350" y="20" font-size="9" fill="var(--text2)">1h45</text><circle cx="560" cy="55" r="5" fill="var(--accent)"/><text x="500" y="48" font-size="10" fill="var(--text2)">ZRH还车</text></svg></div>
+      <div class="day-map"><svg viewBox="0 0 600 100" xmlns="http://www.w3.org/2000/svg"><path d="M40,50 Q120,62 220,55 Q400,28 560,55" fill="none" stroke="var(--day6)" stroke-width="3" stroke-dasharray="6 4" stroke-linecap="round" filter="url(#rough)"/><circle cx="40" cy="50" r="5" fill="var(--day3)"/><text x="10" y="70" font-size="10" fill="var(--text2)">格林德瓦</text><circle cx="220" cy="55" r="5" fill="var(--gold)"/><text x="200" y="48" font-size="9" fill="var(--text2)">Bern</text><text x="350" y="20" font-size="9" fill="var(--text2)">1h45</text><circle cx="560" cy="55" r="5" fill="var(--accent)"/><text x="500" y="48" font-size="10" fill="var(--text2)">机场/酒店</text></svg></div>
       <div class="timeline">
         <div class="tl-item"><div class="tl-time">09:00</div><div class="tl-cont">退房，自驾 格林德瓦 → Bern（70km / 1h15min）</div></div>
-        <div class="tl-item"><div class="tl-time">10:15</div><div class="tl-cont"><b>Bern 老城</b>（UNESCO 世遗）<br>钟楼 <b>Zytglogge</b>（整点前到看木偶表演）<span class="loc" data-dest="Zytglogge Bern">导航</span> + <b>熊苑 Bärenpark</b>（免费看熊）<span class="loc" data-dest="Barenpark Bern">导航</span> + 联邦宫 Bundeshaus + 拱廊街午餐（欧洲最长6km购物拱廊）</div></div>
-        <div class="tl-item"><div class="tl-time">13:00</div><div class="tl-cont">自驾 Bern → 苏黎世机场 ZRH（140km / 1h45min，A1直达）</div></div>
-        <div class="tl-item"><div class="tl-time">~15:00</div><div class="tl-cont"><b>Europcar 还车</b>（ZRH，窗口22:00止）<br><span class="loc" data-dest="Europcar Zurich Airport return">导航·还车点</span></div></div>
-        <div class="tl-item"><div class="tl-time">15:30</div><div class="tl-cont">火车/打车到 <b>Holiday Inn Express</b> 放行李（Rümlang站近）<br><span class="loc" data-dest="Holiday Inn Express Zurich Airport Hofwisenstrasse 30 Rumlang">导航·酒店</span></div></div>
-        <div class="tl-item"><div class="tl-time">16:00</div><div class="tl-cont">火车进苏黎世市区（Rümlang→主站约20min）<br>游 <b>老城 Niederdorf</b><span class="loc" data-dest="Niederdorf Zurich Old Town">导航</span> + <b>大教堂 Grossmünster</b>登塔<span class="loc" data-dest="Grossmunster Zurich">导航</span> + <b>林登霍夫 Lindenhof</b><span class="loc" data-dest="Lindenhof Zurich">导航</span></div></div>
+        <div class="tl-item"><div class="tl-time">10:15</div><div class="tl-cont"><b>Bern 老城</b>（UNESCO 世遗，逛约3h）<br>钟楼 <b>Zytglogge</b>（整点前到看木偶表演）<span class="loc" data-dest="Zytglogge Bern">导航</span> + <b>熊苑 Bärenpark</b>（免费看熊）<span class="loc" data-dest="Barenpark Bern">导航</span> + 联邦宫 Bundeshaus<span class="loc" data-dest="Bundeshaus Bern">导航</span> + 拱廊街午餐（欧洲最长6km购物拱廊）<span class="loc" data-dest="Bern Old City UNESCO">导航·老城</span></div></div>
+        <div class="tl-item"><div class="tl-time">13:15</div><div class="tl-cont">自驾 Bern → Holiday Inn Express（140km / 1h45min，A1直达）<br><span class="loc" data-dest="Holiday Inn Express Zurich Airport Hofwisenstrasse 30 Rumlang">导航·酒店</span></div></div>
+        <div class="tl-item"><div class="tl-time">~15:00</div><div class="tl-cont">到 <b>Holiday Inn Express</b>，<b>寄存行李</b>（前台免费寄存，车停酒店停车场）</div></div>
+        <div class="tl-item"><div class="tl-time">15:15</div><div class="tl-cont">开车去 <b>Europcar 还车</b>（酒店→机场柜台约5min，窗口22:00止）<br><span class="loc" data-dest="Europcar Zurich Airport return">导航·还车点</span></div></div>
+        <div class="tl-item"><div class="tl-time">15:35</div><div class="tl-cont">还车完成，步行/打车到机场火车站</div></div>
+        <div class="tl-item"><div class="tl-time">15:50</div><div class="tl-cont">火车进苏黎世市区（机场站→主站 HB 约12min，班次密）<br>游 <b>老城 Niederdorf</b><span class="loc" data-dest="Niederdorf Zurich Old Town">导航</span> + <b>大教堂 Grossmünster</b>登塔<span class="loc" data-dest="Grossmunster Zurich">导航</span> + <b>林登霍夫 Lindenhof</b><span class="loc" data-dest="Lindenhof Zurich">导航</span></div></div>
         <div class="tl-item"><div class="tl-time">可选</div><div class="tl-cont"><b>苏黎世美术馆 Kunsthaus</b>（周二开，蒙克《呐喊》+印象派，CHF 26）<span class="loc" data-dest="Kunsthaus Zurich">导航</span></div></div>
-        <div class="tl-item"><div class="tl-time">晚</div><div class="tl-cont">火车回 Holiday Inn Express</div></div>
+        <div class="tl-item"><div class="tl-time">晚</div><div class="tl-cont"><b>⚠️ 先在市区吃晚饭再回</b>（瑞士餐厅晚收档，市区选择多）。火车回 Rümlang 站→Holiday Inn（约20min）</div></div>
       </div>
-      <div class="day-note">周二博物馆都开门 ✓。绕道 Bern 多开约1h但老城值得。还车推到15:00仍在窗口内。Rümlang→ZRH机场火车约3分钟，明天赶飞机从容。</div>
+      <div class="day-note">📌 新流程：先到酒店放行李→再还车→火车进市区，不用拖着行李跑。周二博物馆都开门 ✓。绕道 Bern 多开约1h但老城值得。还车推到15:15仍在窗口内。Rümlang→机场火车约3min，明天赶飞机从容。<b>市区吃完晚饭再回酒店</b>，机场附近晚上餐饮少且早关门。</div>
     </div>
   </div>
 
@@ -411,6 +412,13 @@ footer{text-align:center; color:var(--text2); font-size:.72rem; margin-top:40px;
     <div class="tip"><h4>💧 直饮水</h4><p>瑞士自来水达矿泉水品质，<b>所有喷泉均可直饮</b>（除非标"非饮用水"），不用买水，带个水瓶到处接。</p></div>
     <div class="tip"><h4>🛒 省钱与超市</h4><p>餐厅贵，超市最划算：<b>Migros</b> / <b>Coop</b>（旅游区Coop有中国面条等）。<b>Landi</b> 买平价徒步用品。朋友提醒：芝士火锅贵且不好吃，瑞士人一年只吃一两次。</p></div>
     <div class="tip"><h4>🥾 徒步装备</h4><p>冲锋衣/雨具/防晒(帽+SPF50+侧边墨镜)/水瓶+应急零食/轻薄手套围巾/坐垫/望远镜。10月山谷仍暖、山上或已积雪，穿衣分层。瀑布/峡谷穿防滑鞋。</p></div>
+    <div class="tip"><h4>🍽️ 餐饮时间（重要）</h4><p>瑞士餐厅<b>午市 11:30-14:00</b>、<b>晚市 18:00-21:30</b>，午晚之间(14:30-18:00)多数关门歇业。⚠️ 晚上厨房一般 <b>21:00-21:30 收档</b>，热门餐厅20:30后不再接客，<b>务必19:00前到或提前预订</b>。山区山顶餐厅更早关(20:00左右)。酒店餐厅对住客通常开到21:30。<b>周日很多餐厅关门</b>，尤其小城镇。麦当劳/火车站美食街全天供应救急。</p></div>
+    <div class="tip"><h4>💰 小费与结账</h4><p>账单已含服务费(15%)，<b>不用额外给小费</b>。满意可凑整(rounding up)或加2-3 CHF，直接告诉服务员"make it XX"即可。刷卡为主，部分小店/摊位仅现金或最低消费 CHF 20。</p></div>
+    <div class="tip"><h4>🛍️ 周日与营业时间</h4><p>⚠️ 瑞士法律<b>周日商店全关门</b>（超市/商场/街店均休），只有<b>火车站/机场/加油站便利店</b>可买食物日用品。平日商店一般 09:00-18:30(周四晚延至21:00)，周六只到17:00。周日到达的话提前周六囤好物资。</p></div>
+    <div class="tip"><h4>🚂 火车与交通App</h4><p>装 <b>SBB Mobile</b>（瑞士国铁官方App），查全境火车/公交/缆车班次、购票、实时延误，最权威。机场→市区/酒店火车用此查。苏黎世市区单程约 CHF 4.7，可买日票更划算。长途巴士用 <b>PostAuto</b> App。</p></div>
+    <div class="tip"><h4>🏥 药店与看病</h4><p>药店 <b>Apotheke / Pharmacie</b> 绿十字招牌，密集。非处方药(感冒/止痛/创可贴)直接买。周末/夜间有值班药店(diensthabende Apotheke)，Google搜"Apothekennotdienst"。急诊拨144，游客也可去医院Notaufnahme。</p></div>
+    <div class="tip"><h4>🤫 安静时段与禁烟</h4><p>晚 22:00-次日 06:00 为法定静时(Ruhezeit)，周日为休息日(Ruhetag)，噪音(喧哗/装修/洗衣)会被投诉甚至罚款。<b>室内公共场所全面禁烟</b>含餐厅酒吧，部分酒店阳台也禁。</p></div>
+    <div class="tip"><h4>🚰 自来水与餐厅饮水</h4><p>餐厅点"Leitungswasser / eau du robinet"要<b>自来水是免费的</b>（不像欧洲有些国家收费），但要主动开口要，服务员默认推瓶装水(CHF 4-5)。不如直接说 tap water。</p></div>
   </div>
 </section>
 
@@ -428,7 +436,7 @@ const EVENTS=[
   {n:"入住 Neuhaus 因特拉肯", t:"2026-10-03T13:00:00Z", tz:"Europe/Zurich", tzl:"UTC+2 因特拉肯"},
   {n:"入住 Boutique Hotel Glacier 格林德瓦", t:"2026-10-05T13:00:00Z", tz:"Europe/Zurich", tzl:"UTC+2 格林德瓦"},
   {n:"First 山全天", t:"2026-10-06T06:30:00Z", tz:"Europe/Zurich", tzl:"UTC+2 格林德瓦"},
-  {n:"Europcar 还车 + 苏黎世市区", t:"2026-10-07T12:00:00Z", tz:"Europe/Zurich", tzl:"UTC+2 苏黎世"},
+  {n:"Bern → 苏黎世 放行李·还车·进市区", t:"2026-10-07T12:00:00Z", tz:"Europe/Zurich", tzl:"UTC+2 苏黎世"},
   {n:"苏黎世起飞 TG971", t:"2026-10-08T11:30:00Z", tz:"Europe/Zurich", tzl:"UTC+2 苏黎世"},
   {n:"抵达广州 CAN", t:"2026-10-09T06:30:00Z", tz:"Asia/Shanghai", tzl:"UTC+8 广州"}
 ];
